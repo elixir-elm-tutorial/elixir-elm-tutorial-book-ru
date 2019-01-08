@@ -1,7 +1,7 @@
 # Руководство по Elixir и Elm
 
 Репозиторий содержит Markdown-файлы, используемые для создания книги 
-[Руководство по Elixir и Elm](https://leanpub.com/elixir-elm-tutorial).
+[Руководство по Elixir и Elm](https://leanpub.com/elixir-elm-tutorial-ru).
 
 Последние изменения находятся в ветке `preview`,
 а окончательная версия — в ветке` master`.
