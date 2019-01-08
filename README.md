@@ -1,13 +1,13 @@
-# Elixir and Elm Tutorial
+# Руководство по Elixir и Elm
 
-This repository contains the Markdown source files used to create the
-[Elixir and Elm Tutorial](https://leanpub.com/elixir-elm-tutorial) book.
+Репозиторий содержит Markdown-файлы, используемые для создания книги 
+[Руководство по Elixir и Elm](https://leanpub.com/elixir-elm-tutorial).
 
-The latest changes are on the `preview` branch, and the published version
-will be derived from the `master` branch.
+Последние изменения находятся в ветке `preview`,
+а окончательная версия — в ветке` master`.
 
-## Need Help?
+## Нужна помощь?
 
-- Open a [GitHub Issue](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book/issues).
-- Email me at `bijanbwb@gmail.com`.
+- Откройте [ишью на GitHub](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book-ru/issues).
+- Напишите электронное письмо на адрес `bijanbwb@gmail.com`.
 
