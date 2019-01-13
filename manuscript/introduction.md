@@ -1,173 +1,96 @@
-# Introduction
+# Введение
 
-Welcome to the world of functional web programming! In this book, we'll **learn
-how to create fun, scalable, and maintainable web applications**. We'll be
-using a wide range of web technologies along with the latest ideas from
-emerging languages like Elixir and Elm to craft a fun experience. Rather than
-focusing on theory, we'll take a practical approach and build a real-world
-application.
+Добро пожаловать в мир функционального веб-программирования! В этой книге мы узнаем, **как создавать увлекательные, масштабируемые и поддерживаемые веб-приложения**. Мы будем использовать широкий круг веб-технологий вместе с новейшими идеями развивающихся языков, таких как Elixir и Elm, чтобы получить уникальный опыт. Вместо того, чтобы сосредоточиться на теории, мы последуем практическому подходу и создадим реальное приложение.
 
-## What We're Building
+## Что будем разрабатывать
 
-**The application we'll be building together is a small game platform for the
-web**. We'll use Elixir and the Phoenix web framework to power the back-end,
-where players can sign in and keep track of their scores. Then, we'll use Elm
-on the front-end to create fun minigames. We'll connect everything together so
-we can pass data back and forth between the back-end and front-end. Users on
-our platform will view available minigames, and the scores from those games
-will be updated on the platform in real-time. We'll focus on building things
-with a solid foundation so we can use these same concepts to create different
-web applications as well.
+**Приложение, которое мы будем создавать вместе, представляет собой небольшую игровую веб-платформу. Мы будем использовать Elixir и фреймворк Phoenix для поддержки бэкенда, где игроки могут входить в систему и отслеживать свои результаты. Затем мы воспользуемся Elm для фронтенда, чтобы создать забавные мини-игры. Мы объединим всё вместе для передачи данных туда и обратно между бэкендом и фронтендом. Пользователи нашей платформы будут просматривать доступные мини-игры, а результаты этих игр будут обновляться на платформе в режиме реального времени. Мы сосредоточимся на создании кода с прочной основой, так что мы могли использовать эти же концепции для создания различных веб-приложений.
 
-## Acknowledgements
+## Благодарности
 
-I would like to thank **Envy Labs** and **Code School** for fostering
-environments where I was able to work hard and learn and grow. I'd also like
-to thank **José Valim** and **Evan Czaplicki** for crafting such beautiful and
-fun programming languages. And thanks to **Bret Victor** for inspiring all of
-us with his visions of the future.
+Я хотел бы поблагодарить **Envy Labs** и **Code School** за создание среды, в
+которой я смог усердно работать, учиться и расти. Я также хотел бы поблагодарить
+**Хосе Валима (José Valim)** и **Эвана Чаплицки (Evan Czaplicki)** за разработку
+таких замечательных и интересных языков программирования. И спасибо **Брету
+Виктору (Bret Victor)** за то, что он вдохновил всех нас своим представлением о
+будущем.
 
-## Who Is This Book For?
+## Для кого эта книга?
 
-This book is written for developers who already have _some_ existing experience
-with web programming. The goal is for the book to be a practical introduction
-to building a project with functional web programming languages like Elixir and
-Elm.
+Эта книга написана для разработчиков, имеющих _некоторый_ опыт веб-разработки. Цель состоит в том, чтобы книга стала практическим введением в создание проекта с такими функциональными языками веб-программирования, как Elixir и Elm.
 
-We won't assume any prior experience with Elixir and Elm, and consider it more
-likely that you've worked with languages like Ruby and JavaScript. But **keep
-in mind that we'll occasionally forego in-depth explanations and theory in an
-effort to gain insight into shipping a real project**.
+Мы не предполагаем у вас какой-либо предыдущий опыт работы с Elixir и Elm и вместо этого считаем более вероятным, что вы работали с такими языками, как Ruby и JavaScript. Но **имейте в виду, что мы иногда пропускаем подробные объяснения и теорию для понимания, как реализовать настоящий проект**.
 
-We'll walk through initial explanations to give you just enough information
-about the fundamentals and concepts so you can be productive. But there are
-other books that will provide more depth when it comes to learning more about
-the languages themselves:
+Мы представим первоначальные объяснения и дадим достаточно информации про основы и концепции для продуктивной работы. Но есть и другие книги, в которых содержится более подробная информация, когда речь идет про изучение самих языков:
 
 - [Programming Elixir](https://pragprog.com/book/elixir16/programming-elixir-1-6)
-  by Dave Thomas
-- [An Introduction to Elm](https://guide.elm-lang.org) by Evan Czaplicki
+  от Дэйва Томаса (Dave Thomas)
+- [An Introduction to Elm](https://guide.elm-lang.org) от Эвана Чаплицки (Evan Czaplicki)
 
-The material in this book is intended to be crafted in such a way that you can
-follow along simply by typing in the relevant code examples. Beginners can
-still learn a lot simply by following along and building the application,
-because sometimes in programming you need to be exposed to certain concepts and
-ideas before they become easy to understand. The experience of building
-something will be fun and engaging; and a deeper understanding will follow with
-increased familiarity and experience.
+Материал в этой книге написан таким образом, чтобы вы могли следовать ему, просто набирая на клавиатуре соответствующие примеры кода. Новички все еще могут многому научиться, просто повторять за текстом и создавать приложение, потому что иногда в программировании вам необходимо ознакомиться с определенными концепциями и идеями, прежде чем они станут легкими для понимания. Опыт создания чего-либо будет веселым и увлекательным; и более глубокое понимание последует по мере увеличения знакомства и опыта.
 
-## Prerequisites
+## Обязательные условия
 
-In addition to the notes above about the intended audience for this book, here
-are some additional prerequisites to keep in mind:
+В дополнение к приведенным выше примечаниям о целевой аудитории книги, далее приведены некоторые дополнительные предварительные условия, которые следует иметь в виду:
 
-- Some experience with HTML and CSS.
-- Familiarity with the command line and a text editor.
-- Preferably previous experience with Git and GitHub.
-- Preferably some experience working with a web framework.
+- Определенный опыт работы с HTML и CSS.
+- Знакомство с командной строкой и текстовым редактором.
+- Желательно предыдущий опыт работы с Git и GitHub.
+- Желательно некоторый опыт работы с каким-нибудь веб-фреймворком.
 
-## Why Elixir and Elm?
+## Почему Elixir и Elm?
 
 ### Elixir
 
-[Elixir](http://elixir-lang.org) is a dynamic, functional language designed for
-building scalable and maintainable applications.
+[Elixir](http://elixir-lang.org) — это динамический, функциональный язык, разработанный для создания масштабируемых и удобных в сопровождении приложений.
 
-- Elixir is built on top of the Erlang virtual machine, and therefore inherits
-  _decades_ worth of stability and scalability.
-- Concurrency is at the heart of Elixir. Instead of getting faster processors,
-  computers these days are getting processors with more cores. That means we
-  need to write our programs in such a way that allows them to be distributed
-  across multiple cores so our programs can outperform our competitors. As an
-  example, compare the latest
-  [13-inch Macbook Pro models](http://www.apple.com/shop/buy-mac/macbook-pro/13-inch)
-  with 2-core processors with
-  [15-inch Macbook Pro models](http://www.apple.com/shop/buy-mac/macbook-pro/15-inch)
-  with 6-core processors. Then, see how many cores (or "virtual CPUs") you'll
-  have access to when you deploy your application to a
-  [multi-core web server](https://www.digitalocean.com/pricing/#droplet).
-- The Phoenix web framework provides us with the ability to create new projects
-  quickly. For web developers that have worked with Ruby on Rails, the concepts
-  will be familiar and easy to pick up.
-- Elixir also inherits amazing features from other languages:
 
-  - Ruby's readable syntax and philosophy of developer happiness.
-  - Erlang's stability and scalability.
-  - F#'s magical pipe operator for data transformation.
-  - LISP's macros and metaprogramming.
+- Elixir построен на основе виртуальной машины Erlang и поэтому наследует _десятилетия_ стабильности и масштабируемости.
+- Параллелизм занимает центральное место в Elixir. Вместо более быстрых процессоров компьютеры в наши дни имееют процессоры с большим количеством ядер. Это означает, что нам нужно писать программы таким образом, что их можно было распределить по нескольким ядрам, чтобы наши программы могли опередить конкурентов. В качестве примера, сравните последние [13-дюймовые модели Macbook Pro](http://www.apple.com/shop/buy-mac/macbook-pro/13-inch) с 2-ядерными процессорами и [15-дюймовые модели Macbook Pro](http://www.apple.com/shop/buy-mac/macbook-pro/15-inch) с 6-ядерными процессорами. Затем посмотрите, сколько ядер (или «виртуальных процессоров») вы получите при развертывании приложения на [многоядерном веб-сервере](https://www.digitalocean.com/pricing/#droplet).
+- Фреймворк Phoenix дает нам возможность быстро создавать новые проекты. Для веб-разработчиков, ранее работавших с Ruby on Rails, концепции будут знакомы и просты в освоении.
+- Elixir также наследует удивительные особенности от других языков:
+  - Читаемый синтаксис от Ruby и философия счастья у разработчика.
+  - Стабильность и масштабируемость из Erlang.
+  - Магический оператор конвейера с языка F# для преобразования данных.
+  - Макросы и метапрограммирование от LISP.
 
 ### Elm
 
-[Elm](http://elm-lang.org) is an exciting new functional language that is still
-evolving. It's the fastest, most reliable front-end web programming language
-currently available.
+[Elm](http://elm-lang.org) — это новый захватывающий функциональный язык, который продолжает разрабатываться. Это самый быстрый, самый надежный язык веб-программирования для фронтенда, доступный в настоящее время.
 
-- Elm is a compiled, functional language.
-- Elm is _blazingly_ fast.
-- Elm programs are free from runtime errors. That means the language was
-  designed in such a way that makes a certain class of errors impossible, which
-  provides us with an ability to make guarantees about how our programs work.
-- The Elm compiler can be a helpful guide towards writing high quality code,
-  and the error messages provided are extremely helpful.
-- The elm-format tool helps with writing consistent code that is easier to
-  read, write, and maintain. While optional, this tool is _highly_ recommended
-  for Elm beginners because you can configure it to automatically format code
-  when you save a file in your editor.
-- With all the features Elm has to offer, the net result is confidence. As
-  developers, we can be more confident that our code is performing the way
-  we intended, and that our programs will function properly for our users.
-- Elm code is maintainable. Refactoring is a dream, and you'll find yourself
-  surprised at how easy a significant refactor can feel after coming from other
-  languages.
+- Elm — это компилируемый и функциональный язык.
+- Elm _удивительно_ быстрый.
+- Программы на Elm не подвержены ошибками во время выполнения. Это означает, что язык разработан таким образом, что делает определенный класс ошибок невозможным, что в свою очередь дает нам возможность гарантировать относительно того, как работают наши программы.
+- Компилятор Elm может послужить полезным руководством для написания высококачественного кода, а приведенные сообщения об ошибках _чрезвычайно_ полезны.
+- Инструмент elm-format помогает в создании единообразного кода, который легче читать, писать и поддерживать. Хотя этот инструмент необязательный для использования, он настоятельно рекомендуется новичкам в Elm, поскольку можно настроить его, чтобы он автоматически форматировал код при сохранении файла в редакторе.
+- Благодаря всем возможностям, предлагаемые Elm, конечным результатом является уверенность. Как разработчики, мы можем быть более уверены в том, что наш код работает так, как мы задумали, а наши программы будут работать должным образом для пользователей.
+- Код Elm — легкий для сопровождения. Рефакторинг — это мечта, и вы удивитесь тому, как легко его делать после перехода с других языков.
 
-### Elixir and Elm?
+### Elixir и Elm?
 
-**Elixir and Elm are young, functional programming languages that are optimized
-for your happiness as a developer. They offer a programming experience that
-will make it fun to develop applications, and over time those applications will
-be easy to extend and maintain**.
+**Elixir и Elm — это новые, функциональные языки программирования, которые оптимизированы для вашего счастья как разработчика. Они предлагают опыт программирования, который сделает разработку приложений увлекательной, и со временем эти приложения будут легкими для расширения и поддержки**.
 
-The primary reason to pick up new languages like Elixir and Elm is that it will
-afford you with an opportunity to acquire new ways of thinking. Many great
-lessons have been learned in the field of programming over the past several
-decades, and unfortunately many developers are still working in the dark on a
-daily basis. We ignore history at a great cost, and all too often make things
-difficult on ourselves. Elixir and Elm are a chance at a fresh perspective.
+Основная причина выбора новых языков, таких как Elixir и Elm, заключается в том, что они дадут возможность приобрести новые способы мышления. За последние несколько десятилетий было извлечено много замечательных уроков в области программирования, и, к сожалению, многие разработчики все еще ежедневно работают вслепую. Игнорирование истории обходится нам большими затратами и мы слишком часто усложняем себе жизнь. Elixir и Elm — это шанс на новый взгляд.
 
-## Technology Stack
+## Технологический стек
 
-There are _many_ technologies involved in building and deploying modern web
-applications. We'll be using a straightforward stack of technologies that will
-allow us the flexibility to scale our applications gracefully. Here's the short
-version of the technology stack:
+Существует _много_ технологий, которые используется для создания и развертывания современных веб-приложений. Мы будем использовать простой стек технологий, позволяющий гибко масштабировать наши приложения. Вот сокращенный вариант стека технологий:
 
-- Back-end: Elixir
-- Front-end: Elm
+- Бэкенд: Elixir
+- Фронтенд: Elm
 
-These technologies stand on the shoulders of giants, so here's a little more
-information about other technologies we'll also use while building our
-applications:
+Эти технологии опираются на плечи гигантов, поэтому вот еще немного данных про другие технологии, которые мы также будем использовать:
 
-- Back-end: Elixir and Phoenix
-- Front-end: Elm, the Elm Architecture, and JavaScript
-- Version Control: Git and GitHub
-- Data: Ecto, PostgreSQL, and JSON
-- Deployment: Heroku
+- Бэкенд: Elixir и Phoenix
+- Фронтенд: Elm, архитектура Elm и JavaScript
+- Система контроля версий: Git и GitHub
+- Данные: Ecto, PostgreSQL и JSON
+- Развертывание: Heroku
 
-## Functional Programming
+## Функциональное программирование
 
-If you're coming from a background in working with Ruby on Rails or JavaScript
-web frameworks, then you'll have a head start in being able to grasp the
-content and move smoothly through the book. Something to keep in mind is that
-Elixir and Elm are _functional_ languages. If you're coming from an
-_object-oriented_ background, you may find some of the concepts unfamiliar at
-first, but the initial discomfort will pay off over time as you learn to solve
-problems in an elegant functional manner.
+Если вы ранее работали с Ruby on Rails или JavaScript-фреймворками, то у вас есть преимущество в понимании и плавном изучении книги. Нужно только помнить, что Elixir и Elm являются _функциональными_ языками. Если у вас опыт с _объектно-ориентированным подходом_, вы можете сначала найти определенные понятия незнакомыми, однако некоторый дискомфорт со временем окупится, когда вы научитесь решать проблемы весьма элегантным функциональным способом.
 
-## Summary
+## Резюме
 
-In this introduction, we touched briefly on the application we'll be building
-and some of the reasoning for choosing Elixir and Elm as languages. But the
-fun part is _creating_ with these technologies and _experiencing_ the benefits
-first-hand, so let's dive in and start building our application in the next
-chapter.
+В этом введении мы кратко затронули создаваемое приложение, а также некоторые причины выбора Elixir и Elm в качестве используемых языков. Но самое интересное — это _создание_ с использованием этих технологий и непосредственное _использование преимуществ_, поэтому давайте углубимся и начнем создавать наше приложение в следующей главе.
