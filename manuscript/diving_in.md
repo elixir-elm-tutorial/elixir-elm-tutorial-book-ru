@@ -1,40 +1,28 @@
-# Diving In
+# Приступаем к работе
 
-Instead of simply _reading_ about Elixir and Elm, let's dive in and
-_experience_ what these languages have to offer. In this chapter, we're going
-to avoid detailed explanations and theory in favor of quickly building the
-foundation for our project. We'll focus on running the necessary commands in
-the Terminal and writing the code we'll need to start creating our application.
+Вместо того, чтобы просто _читать_ про Elixir и Elm, давайте погрузимся и _познакомимся_ с тем, что могут предложить эти языки. В данной главе мы пропустим подробные объяснения и теорию в пользу быстрого создания заготовки для нашего проекта. Мы сосредоточимся на запуске необходимых команд в терминале и написании кода, который нам понадобится для начала разработки приложения.
 
-Later in the book, we'll cover more about the fundamentals of Elixir, but for
-now let's focus on following along and getting a glimpse of how to get an
-application up and running.
+Позже в книге мы расскажем больше об основах Elixir, но сейчас давайте обратим внимание на то, чтобы следовать инструкциям, указанным в книге, а также бегло ознакомимся с тем, как настроить и запустить приложение.
 
-## Installation
+## Установка
 
-If you haven't already set up your development environment with Elixir,
-Phoenix, and PostgreSQL, **check out the [Appendix](#appendix) in the back
-of the book for quick installation instructions**.
+Если вы еще не настроили собственную среду для разработки на Elixir, Phoenix и PostgreSQL, **ознакомьтесь с [Приложением](#appendix) в конце книги для получения соответствующих инструкций по быстрой установке**.
 
-Also note that we're working with the _latest_ version of Phoenix in this book.
-Make sure you have **Phoenix 1.4** installed, or the commands and files will
-all look different as you work through the material.
+Также обратите внимание, что мы работаем с _последней_ версией Phoenix в этой книге. Убедитесь, что у вас установлен **Phoenix 1.4**, иначе команды и файлы будут выглядеть по-разному во время работы с материалом.
 
-## Creating the Platform
+## Создание платформы
 
-The first step we need to take is to create the foundation for our application.
-To do that, let's open up our Terminal and run the following command:
+Первый шаг, который нам нужно сделать, — создать заготовку для нашего приложения. Для этого откроем терминал и запустим следующую команду:
 
 ```shell
 $ mix phx.new platform
 ```
 
-It will ask the following question:
+Команда задаст следующий вопрос:
 
 > Fetch and install dependencies?
 
-Enter the letter `Y` and the following output will be displayed (note that some
-of the file creation lines were trimmed for the sake of readability):
+Введите букву `Y` и отобразится следующий вывод (обратите внимание, что некоторые строчки создания файлов были обрезаны для удобства чтения):
 
 ```shell
 $ mix phx.new platform
@@ -51,58 +39,45 @@ Fetch and install dependencies? [Yn] Y
 * running mix deps.get
 * running mix deps.compile
 * running cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
+```
 
-We are all set! Go into your application by running:
+У нас все готово! Зайдите в приложение путем его запуска:
 
     $ cd platform
 
-Then configure your database in config/dev.exs and run:
+Затем настройте базу данных в файле `config/dev.exs` и выполните команду ниже:
 
     $ mix ecto.create
 
-Start your Phoenix app with:
+Запустите приложение на Phoenix следующим образом:
 
     $ mix phx.server
 
-You can also run your app inside IEx (Interactive Elixir) as:
+Вы также можете запустить приложение внутри IEx (Interactive Elixir) вот так:
 
     $ iex -S mix phx.server
-```
 
-Phoenix displays _a lot_ of helpful information. First, the output shows all
-the files that were generated (don't worry if it seems overwhelming at first;
-we're only going to start with a handful of these files). Then, we see some
-information about how to configure our database and start the server.
+Phoenix отображает _много_ полезной информации. Во-первых, в выводе отображаются все сгенерированные файлы (не беспокойтесь, если на первый взгляд вывод кажется огромным; мы начнем только с нескольких этих файлов). Затем мы видим некоторую информацию о том, как настроить базу данных и запустить сервер.
 
-## Configuring the Database
+## Настройка базы данных
 
-Now that we've created the files for our Phoenix application, let's change to
-that directory:
+Теперь как мы создали файлы для нашего приложения Phoenix, давайте перейдем к нужной директории:
 
 ```shell
 $ cd platform
 ```
 
-We can set up the database for our project by running the following command:
+Мы можем настроить базу данных для проекта, если выполним следующую команду:
 
 ```shell
 $ mix ecto.create
 ```
 
-If you run into issues here, it likely means you'll have to configure your
-PostgreSQL installation or adjust the database `username` and `password` fields
-at the bottom of the `config/dev.exs` file. You can also check out the
-[Appendix](#appendix) at the back of this book for more information on
-PostgreSQL.
+Если вы столкнетесь с проблемами при выполнении команд — это, вероятно, значит, что предстоит установить PostgreSQL или настроить поля `username` и `password`  в нижней части файла `config/dev.exs`. Вы также можете заглянуть в [Приложение](#appendix) в конце книги для получения дополнительной информации о PostgreSQL.
 
-Since this is the first time we're running a command with our new application,
-we'll see that it takes time for the source code to compile. Elixir runs on the
-Erlang virtual machine, and needs to compile the source to bytecode before we
-can run our programs. It takes time to run initially, but subsequent commands
-will run noticeably faster after this.
+Поскольку мы впервые запускаем команду с нашим новым приложением, мы увидим, что для компиляции исходного кода потребуется некоторое время. Elixir работает на виртуальной машине Erlang и должен скомпилировать исходный код в байт-код, прежде чем мы сможем запустить наши программы. На первоначальном этапе нужно время для запуска, но последующие команды будут работать заметно быстрее.
 
-If the database creation was successful, we'll see the following message at the
-bottom:
+Если создание базы данных прошло успешно, мы увидим следующее сообщение внизу:
 
 ```shell
 $ mix ecto.create
@@ -111,42 +86,28 @@ Generated platform app
 The database for Platform.Repo has been created
 ```
 
-We have successfully created our Phoenix application, compiled it, and set up
-our database.
+Мы успешно создали приложение Phoenix, скомпилировали его и настроили базу данных.
 
-## Running the Server
+## Запуск сервера
 
-Let's see what our new application looks like in the browser. To start the web
-server, run the following command:
+Посмотрим, как выглядит приложение в браузере. Чтобы запустить веб-сервер, выполните следующую команду:
 
 ```shell
 $ mix phx.server
 ```
 
-This will start a server and allow us to visit
-[`http://localhost:4000`](http://localhost:4000) in a browser to see our new
-application running. Here is what the output will look like (ignoring the
-additional output from Webpack):
+Команда выше запустит сервер, доступный по URL-адресу [`http://localhost:4000`](http://localhost:4000) из браузера, чтобы увидеть, как работает наше новое приложение. Вот как будет выглядеть вывод (игнорируя дополнительный вывод от Webpack):
 
 ```shell
 $ mix phx.server
 [info] Running PlatformWeb.Endpoint with cowboy using http://localhost:4000
 ```
 
-![Phoenix Default Start Page](images/diving_in/phoenix_start.png)
+![Начальная страница Phoenix по умолчанию](images/diving_in/phoenix_start.png)
 
-At this point, you might be impressed that we managed to get a full back-end
-up and running so quickly. Or, you may have seen similar features in other
-frameworks, and perhaps you're nonplussed with our progress so far. We're going
-to start adding features to our application, but it's worth taking a moment to
-appreciate how much we already have going for us with just a few commands.
+На данном этапе вас может впечатлить то, что нам удалось создать и запустить так быстро полноценный бэкенд. Хотя, возможно, вы наблюдали подобные возможности у других фреймворках, и поэтому вы пока нисколько не удивлены текущими результатами. Мы собираемся начать разработку функционала приложения, но стоит задуматься на мгновение и оценить, сколько же у нас всякого, созданного всего лишь с помощью нескольких команд.
 
-Feel free to take a look at some of the great documentation listed on the
-default Phoenix start page. Before we move on, let's stop the Phoenix web
-server. Go back to the Terminal where the server is running, and press
-`Control + C` on your keyboard _twice_ to stop the server. This tends to be the
-simplest way to exit a running Elixir program, and here is what the output will
-look like as you stop the running web server:
+Не стесняйтесь посмотреть на определенные разделы замечательной документации, которые перечислены на начальной странице Phoenix по умолчанию. Прежде чем мы продолжим, давайте остановим веб-сервер Phoenix. Вернитесь в окно терминала, где запущен сервер, и _дважды_ нажмите `Control + C` на клавиатуре для остановки сервера. Это, как правило, самый простой способ выйти из  выполняющейся программы на Elixir, и вот как будет выглядеть вывод при завершении работы сервера:
 
 ```shell
 $ mix phx.server
@@ -164,41 +125,28 @@ BREAK: (a)bort (c)ontinue (p)roc info (i)nfo (l)oaded
 $ 
 ```
 
-## Our First Resource
+## Первый ресурс
 
-Since we are building a small game platform, there are two primary resources
-that we'll want to get started with:
+Поскольку мы создаем небольшую игровую платформу, есть два основных ресурса, с которых нам лучше начать:
 
-- Players
-- Games
+- Игроки
+- Игры
 
-We're going to start by using something called a generator to keep moving
-quickly. It's going to create a lot of the files we need to work with. Then,
-we'll cover more about how it all works later.
+Мы собираемся начать с использования так называемого генератора, чтобы быстрее двигаться. Он создаст много файлов, с которыми нужно работать. Затем позже мы узнаем больше про то, как все это работает.
 
-Let's generate the resource for our players with the following command:
+Давайте сгенерируем ресурс для наших игроков с помощью следующей команды:
 
 ```shell
 $ mix phx.gen.html Accounts Player players username:string score:integer
 ```
 
-With this command, we're creating players for our game platform. We want to be
-able to use our browser to interact with the data, so we're starting with
-[`phx.gen.html`](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Html.html) to
-generate an HTML resource.
+С помощью этой команды мы создаем игроков для нашей игровой платформы. Мы хотим использовать браузер для работы с данными, поэтому мы начинаем с файла [`phx.gen.html`](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Html.html), чтобы создать HTML-ресурс.
 
-Because we're creating player accounts for our application, we use `Accounts`
-to provide a _context_ for our resource. Then, we use `Player` for the module
-name and `players` to indicate the pluralized form, which will also be used
-to create the database table.
+Поскольку мы создаем учетные записи игроков для разрабатываемого приложения, мы используем `Accounts`, чтобы предоставить _контекст_ для нашего ресурса. Затем мы используем `Player` в качестве имени модуля и `players`, чтобы указать на множественную форму, которая также будет использоваться для создания таблицы базы данных.
 
-For the player fields, each player account will have a `username` (stored as a
-string), and a `score` (stored as an integer). We'll eventually extend the
-capabilities of our players with additional fields, but for now this will
-give us a good starting point to start creating a list of players.
+Для полей игрока каждый аккаунт игрока будет иметь имя пользователя (`username`, хранится в виде строки) и счет (`score`, хранится как целое число). Со временем мы расширим потенциал наших игроков дополнительными полями, но пока это даст нам хорошую отправную точку для начала создания списка игроков.
 
-You'll see that the generator creates quite a few files for us, and once again
-Phoenix gives us some helpful tips about what to do next:
+Вы увидите, что генератор создает довольно много файлов, и в очередной раз Phoenix дает нам несколько полезных советов по поводу дальнейших действий:
 
 ```shell
 $ mix phx.gen.html Accounts Player players username:string score:integer
@@ -216,26 +164,21 @@ $ mix phx.gen.html Accounts Player players username:string score:integer
 * injecting lib/platform/accounts/accounts.ex
 * creating test/platform/accounts/accounts_test.exs
 * injecting test/platform/accounts/accounts_test.exs
+```
 
-Add the resource to your browser scope in lib/platform_web/router.ex:
+Добавьте ресурс в область видимости браузера в файл `lib/platform_web/router.ex`:
 
     resources "/players", PlayerController
 
-Remember to update your repository by running migrations:
+Не забудьте обновить репозиторий, запустив миграцию:
 
     $ mix ecto.migrate
-```
 
-## Routing
+## Маршрутизация
 
-Don't worry too much about all those files yet, but the information at the
-bottom is important. In order to configure our application to work with our new
-player accounts, we'll need to add them to the router first, and then run a
-migration to update the database with a new `players` table.
+Пока не беспокойтесь о всех этих файлах, но информация ниже важна. Чтобы настроить приложение для работы с нашими новыми учетными записями игроков, нужно сначала добавить их в маршрутизатор, а затем запустить миграцию для обновления базы данных (добавить новую таблицу `players`).
 
-Phoenix makes things easy on us with the helpful notes in the Terminal. Let's
-go ahead and follow along. Open the `lib/platform_web/router.ex` file and see
-what it looks like:
+Phoenix облегчает нам задачу с помощью полезных заметок в терминале. Давайте пойдем вперед и повторяем, что написано далее. Откройте файл `lib/platform_web/router.ex` и посмотрите, как он выглядит:
 
 ```elixir
 defmodule PlatformWeb.Router do
@@ -266,13 +209,7 @@ defmodule PlatformWeb.Router do
 end
 ```
 
-The Phoenix router comes with two separate "pipelines" by default. One of them
-is for HTML (which we're going to use now), and the other one is for JSON
-(which we'll also use later). And we can even see that the `scope` is already
-set up for us to access the HTML with our browser. That's how we were able to
-load the `http://localhost:4000` URL and see the initial starter page. Don't
-worry if it seems confusing at first. All you need to know is that this block
-of code is where we'll focus for now:
+Маршрутизатор Phoenix поставляется с двумя отдельными «конвейерами» по умолчанию. Один из них предназначен для HTML (который мы собираемся использовать в данный момент), а другой — для JSON (который мы также будем использовать, но позже). И мы даже можем видеть, что `scope` уже настроена для доступа к HTML через браузер. Вот так мы смогли открыть URL-адрес `http://localhost:4000` и увидеть начальную стартовую страницу. Не волнуйтесь, если это поначалу кажется непонятным. Учтите только одно — сейчас мы остановимся на этом блоке кода:
 
 ```elixir
 scope "/", PlatformWeb do
@@ -282,7 +219,7 @@ scope "/", PlatformWeb do
 end
 ```
 
-And we're going to update it with our new players resource:
+Далее мы собираемся обновить этот фрагмент, добавив новый ресурс игроков:
 
 ```elixir
 scope "/", PlatformWeb do
@@ -293,24 +230,17 @@ scope "/", PlatformWeb do
 end
 ```
 
-That means when we access
-[`http://localhost:4000/players`](http://localhost:4000/players), we'll
-soon be able to start creating the players for our game platform.
+Это означает, что когда мы получим доступ к [`http://localhost:4000/players`](http://localhost:4000/players), мы скоро сможем начать создавать игроков для нашей игровой платформы.
 
-## Running a Migration
+## Запуск миграции
 
-Our application has all the information it needs to render the players resource
-that we created, but we still need to tell the database about the changes we
-made. For the database to store our player data (with the `username` and
-`score` fields), we'll need to run a migration. Go back to the Terminal, and
-run the following command:
+Наше приложение содержит всю информацию, необходимую для отображения созданного нами ресурса игроков, но нам все еще нужно сообщить базе данных про внесенные изменения. Чтобы база данных сохраняла данные наших игроков (с полями `username` и `score`), нужно выполнить миграцию. Вернитесь в терминал и выполните следующую команду:
 
 ```shell
 $ mix ecto.migrate
 ```
 
-This will create a new database table called `players`. If everything
-goes according to plan, then we should see the following output:
+Это создаст новую таблицу базы данных `players`. Если все идет по плану, то мы должны увидеть следующий вывод:
 
 ```shell
 $ mix ecto.migrate
@@ -321,56 +251,39 @@ Generated platform app
 08:18:44.371 [info]  == Migrated in 0.1s
 ```
 
-## Creating Players
+## Создание игроков
 
-Let's start our server again and see our new player resource in action:
+Давайте снова запустим сервер и увидим ресурс игрока в действии:
 
 ```shell
 $ mix phx.server
 ```
 
-Now we can access
-[http://localhost:4000/players](http://localhost:4000/players) and we should
-see the following:
+Теперь мы можем перейти по адресу
+[http://localhost:4000/players](http://localhost:4000/players) и увидим
+следующее:
 
-![Empty List of Players on Player Index Page](images/diving_in/empty_players_list.png)
+![Пустой список игроков на индексной странице игрока](images/diving_in/empty_players_list.png)
 
-This is excellent. We can now add players to our platform using a web browser.
-Click the **New Player** link at the bottom and try creating a player on the
-[`http://localhost:4000/players/new`](http://localhost:4000/players/new) page.
+Прекрасно, теперь мы можем через браузер добавлять игроков на платформу. Нажмите на ссылку **New Player** внизу и попробуйте создать игрока на странице [`http://localhost:4000/players/new`](http://localhost:4000/players/new).
 
-![New Player Page](images/diving_in/new_player.png)
+![Страница нового игрока](images/diving_in/new_player.png)
 
-After we successfully create a new player account, we'll see the "show" page
-with the individual player's data (notice the player `id` number is displayed
-in the URL too):
+После того, как мы успешно создадим новую учетную запись игрока, мы перейдем на страницу с псевдонимом «show», на которой будут отображены данные по конкретному игроку (обратите внимание, что идентификатор (`id`) игрока также отображается в URL-адресе):
 
-![Player Show Page](images/diving_in/new_player_created.png)
+![Страница отображения информации об игроке](images/diving_in/new_player_created.png)
 
-Feel free to create additional player accounts so we have data to work with on
-our players page:
+Не стесняйтесь создавать дополнительные учетные записи игроков, поскольку эти данные выводятся на странице игроков:
 
-![Players Index with Sample Data](images/diving_in/list_players.png)
+![Страница со списком игроков с демонстрационными данными](images/diving_in/list_players.png)
 
-## Updating our Home Page
+## Обновление главной страницы
 
-We have a working players resource with an index of all the players, a show
-page to view a single player, an edit page to update a single player, and the
-ability to delete players. But when we go back to our home page at
-[`http://localhost:4000`](http://localhost:4000), these pages aren't accessible.
-Our users wouldn't know that they need to visit the `/players/new` page to
-create their account. At some point, we will only want our users to be able to
-create their accounts without being able to edit or delete others. To get
-started, let's figure out where the HTML code is coming from for our home page.
+У нас есть работающий ресурс игроков с индексной страницей всех игроков, страница отображения игрока, страница редактирования для обновления данных по игроку, а ещё возможность удаления игроков. Но когда мы возвращаемся на нашу домашнюю страницу по адресу [`http://localhost:4000`](http://localhost:4000), эти страницы не доступны. Наши пользователи не знают, что им нужно посетить страницу `/players/new` для создания своего аккаунта. Рано или поздно мы захотим, чтобы наши пользователи могли создавать свои учетные записи, при этом не редактируя и не удаляя другие. Для начала давайте выясним, откуда приходит HTML-код для нашей домашней страницы.
 
-Inside the `lib/platform_web` folder, there is a `templates` folder. This is
-where we put the HTML code that we want to render in the browser. And instead
-of standard `.html` files, we'll see that the files have a `.html.eex`
-extension. That means we can write standard HTML code, and we can also embed
-Elixir code too.
+Внутри директории `lib/platform_web` есть директория `templates`. Здесь мы храним HTML-код, который показывается в браузере. И вместо обычных файлов с расширением `.html` мы увидим, что файлы имеют расширение `.html.eex`. Это означает, что мы можем писать знакомый нам HTML-код, а также встроить код на Elixir.
 
-Let's open the `lib/platform_web/templates/page/index.html.eex` file and take a
-look (note that some of the HTML was trimmed for the sake of readability):
+Давайте откроем файл `lib/platform_web/templates/page/index.html.eex` и посмотрим его содержимое (обратите внимание, что часть кода HTML была обрезана для удобства чтения):
 
 ```embedded_elixir
 <section class="phx-hero">
@@ -390,12 +303,7 @@ look (note that some of the HTML was trimmed for the sake of readability):
 </section>
 ```
 
-This should look familiar in that it's mostly comprised of standard HTML code.
-It's the HTML that we're seeing when we load
-[`http://localhost:4000`](http://localhost:4000). Let's delete this code and create
-a couple of simple links to our player pages. First, remove _all_ the existing
-code in the `lib/platform_web/templates/page/index.html.eex` file. Then,
-replace it with the following:
+Это должно выглядеть знакомо, поскольку в основном код состоит из обычного HTML-кода. Это HTML-код, который мы видим при загрузке [`http://localhost:4000`](http://localhost:4000). Давайте удалим этот код и создадим пару простых ссылок на страницы игроков. Сначала удалите _весь_ существующий код в файле `lib/platform_web/templates/page/index.html.eex`. Затем замените его на следующий:
 
 ```html
 <div class="container">
@@ -404,37 +312,21 @@ replace it with the following:
 </div>
 ```
 
-Save the file and go back to the browser to see the changes (make sure the
-Phoenix web server is still running or restart the server with
-`mix phx.server`) at [`http://localhost:4000`](http://localhost:4000):
+Сохраните файл и вернитесь в браузер, чтобы увидеть изменения (убедитесь, что веб-сервер Phoenix все еще запущен, либо перезапустите сервер с помощью `mix phx.server`) по адресу [`http://localhost:4000`](http://localhost:4000):
 
-![Home Page with List Players Link](images/diving_in/updated_home_page.png)
+![Главная страница со ссылкой на списком игроком](images/diving_in/updated_home_page.png)
 
-Phoenix comes with a **Live Reload** feature that automatically refreshes our
-application in the browser. If the Phoenix server was still running, then the
-home page was automatically regenerated and should now display the buttons that
-we created. Try them out, and they should enable users to successfully navigate
-to the player pages in our application.
+Phoenix поставляется с функцией **Live Reload**, которая автоматически обновляет приложение в браузере. Если сервер Phoenix все еще работал, то главная страница будет автоматически перезагружена и теперь должна отображать созданные только что кнопки. Посмотрите на результат, и с помощью них пользователи смогут свободно переходить на страницу определенного игрока в приложении.
 
-## Writing Elixir Code
+## Написание Elixir-кода
 
-Lastly, let's get some experience with writing Elixir code in our templates
-by converting our buttons to use embedded Elixir code instead of simple HTML.
-The page will work the same way, but this will give us a chance to use a
-Phoenix feature instead of writing HTML.
+Наконец, давайте получим небольшой опыт написания кода на Elixir в шаблонах, использовав встроенный код Elixir для вывода кнопок вместо простого HTML. Страница будет выглядеть точно так же, но это даст нам возможность использовать возможность Phoenix вместо написания HTML.
 
-Phoenix gives us a
-[link](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Link.html#link/2) function
-we can use, and we can see a handful of examples provided in the documentation.
+Phoenix предоставляет функцию [link](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Link.html#link/2), которую мы можем использовать; на странице документации к этой функции можно увидеть несколько примеров использования.
 
-Since we're working with a `.eex` file, that means we can embed Elixir code by
-surrounding it with tags like this: `<%= ... %>`. The Elixir code that we put
-inside those tags will be evaluated, and then rendered onto the page.
+Поскольку мы работаем с файлом расширения `.eex`, это означает, что мы можем встроить код Elixir, окружив его тегами `<%= ... %>`. Код Elixir, который мы поместим в эти теги, будет выполнен, а затем выведен на страницу.
 
-A helpful debugging technique while working with Elixir is to use the
-[`IO.inspect`](https://hexdocs.pm/elixir/IO.html#inspect/2) function to display
-results. In this example, we're using the `IO` module with the `inspect`
-function, and we're passing it the string `"Hello World!"`:
+При работе с Elixir полезной техникой отладки является использование функции [`IO.inspect`](https://hexdocs.pm/elixir/IO.html#inspect/2), чтобы отобразить результаты. В этом примере мы используем модуль `IO` с функцией `inspect` и передадим ей строку `"Hello World!"`:
 
 ```embedded_elixir
 <div class="container">
@@ -445,16 +337,11 @@ function, and we're passing it the string `"Hello World!"`:
 </div>
 ```
 
-Let's take a look at the results in our browser:
+Давайте посмотрим на результат в браузере:
 
-![Embedded Elixir](images/diving_in/embedded_elixir.png)
+![Встроенный код Elixir](images/diving_in/embedded_elixir.png)
 
-We can do something similar to embed a link on our page. We won't need to
-explicitly mention the module (`Phoenix.HTML.Link`), because we already have
-access to some helpful Phoenix functions in this context. We can recreate
-our existing HTML links with the following code by passing the link text, the
-location, and a `button` class to make it look nice (Phoenix comes with a small
-CSS framework preinstalled):
+Мы можем сделать что-то подобное, чтобы вставить ссылку на нашу страницу. Нам не нужно явно указывать модуль (`Phoenix.HTML.Link`), потому что у нас уже есть доступ к некоторым полезным функциям Phoenix в данном контексте. Мы можем воссоздать наши существующие HTML-ссылки с помощью следующего кода, передав текст ссылки, адрес и CSS-класс кнопки, чтобы он выглядел хорошо (Phoenix поставляется с небольшим предустановленным CSS-фреймворком):
 
 ```embedded_elixir
 <div class="container">
@@ -463,22 +350,12 @@ CSS framework preinstalled):
 </div>
 ```
 
-We can now verify that our links still work the same way they did previously:
+Теперь мы можем убедиться, что наши ссылки по-прежнему работают так же, как и раньше:
 
-![Link to Players Page Using Embedded Elixir](images/diving_in/updated_home_page.png)
+![Ссылка по страницу игроков с использованием встроенного Elixir-кода](images/diving_in/updated_home_page.png)
 
-## Summary
+## Резюме
 
-In this chapter, we managed to cover a lot of ground. We were able to create
-the entire foundation for our application with a Phoenix back-end. We leveraged
-the Phoenix generators to create our players resource, started getting an idea
-of what the Phoenix folder structure looks like, and began editing files. We
-also learned a little about routing and working with the database.
+В этой главе нам удалось охватить много вопросов. Мы смогли создать фундамент для нашего приложения с помощью бэкенда на Phoenix. Мы использовали генераторы Phoenix для создания ресурса игроков, начали понимать, как выглядит структура директорий Phoenix, а также начали редактировать файлы. Кроме этого, немного узнали о маршрутизации и работе с базой данных.
 
-We've gotten an introductory look at how to create a full Elixir and Phoenix
-web platform, and we even created a couple of player records that we can use as
-we continue building. But we moved quickly through these steps, and we don't
-have a solid understanding of how all these pieces fit together yet. In the
-next chapter, we'll delve into some Elixir basics. And instead of using
-generators like we did in this chapter, we'll manually create features in our
-application so we can continue increasing our experience.
+Мы получили вводный взгляд на то, как создать полноценную веб-платформу с использованием Elixir и Phoenix, и даже создали пару записей об игроках, которые мы можем использовать, когда продолжим разработку. Но мы быстро прошли через все эти шаги, и у нас пока нет четкого понимания того, как все кусочки складываются в единую мозаику. В следующей главе мы углубимся в некоторые основы Elixir. И вместо того, чтобы использовать генераторы, как мы делали в этой главе, вручную создадим функциональность нашего приложения, чтобы продолжать увеличивать опыт.
