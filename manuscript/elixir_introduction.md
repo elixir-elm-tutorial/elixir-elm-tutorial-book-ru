@@ -1,23 +1,16 @@
-# Elixir Introduction
+# Введение в Elixir
 
-In the last chapter, we created a full Phoenix back-end platform. By default,
-Phoenix applications contain a lot of Elixir code. But if we're just getting
-started with the Elixir language, we should probably take a look at some simple
-Elixir examples and get a better idea of how to work with the tools.
+В предыдущей главе мы создали бэкенд-платформу на Phoenix. По умолчанию приложения Phoenix содержат много кода Elixir. Но если мы только начинаем работать с языком Elixir, нам, вероятно, стоит взглянуть на несколько простых примеров Elixir и лучше понять, как работать с инструментами.
 
-## Creating an Elixir Project
+## Создание Elixir-проекта
 
-Let's create a small temporary project. We'll use the same `mix` tool that we
-used in the last chapter when we created our Phoenix application, but this time
-we're just creating a small Elixir project called `temporary`. Run the
-following command in the Terminal:
+Давайте создадим небольшой временный проект. Мы будем использовать тот же инструмент `mix`, который использовали в предыдущей главе, когда создавали наше приложение Phoenix, но на этот раз мы просто создаем маленький проект Elixir и назовём его `temporary`. Запустите следующую команду в терминале:
 
 ```shell
 $ mix new temporary
 ```
 
-The `mix` tool is a simple build tool that ships with Elixir. Here's what the
-output should look like when we create our project:
+Инструмент `mix` — это простой инструмент для сборки, поставляемый вместе с Elixir. Вот как должен выглядеть вывод при создании проекта:
 
 ```shell
 $ mix new temporary
@@ -42,43 +35,31 @@ You can use "mix" to compile it, test it, and more:
 Run "mix help" for more commands.
 ```
 
-Let's change into the new project's directory and take a look at the files that
-were generated for us:
+Давайте перейдем в директорию нового проекта и посмотрим на созданные файлы:
 
 ```shell
 $ cd temporary
 ```
 
-The first thing you might notice is that our Elixir project and our Phoenix
-project share a lot in common. The folder structure is similar:
+Первое, что вы можете заметить — проект Elixir и проект на Phoenix имеют много общего. Структура директорий похожа:
 
-![Elixir Folder Structure](images/elixir_introduction/elixir_folder_structure.png)
+![Структура директорий Elixir](images/elixir_introduction/elixir_folder_structure.png)
 
-The `platform` project we created in the last chapter contains more files and
-folders, but it's important to note that it's still an Elixir project just like
-the `temporary` one that we just created. The `config` folder contains
-configuration settings, the `lib` folder is where we'll write most of our
-Elixir code, and the `test` folder contains the tests that let us know our
-application is working as intended.
+Созданный в предыдущей главе проект `platform`, содержит больше файлов и директорий, но важно отметить, что это все еще проект Elixir, такой же, как `temporary`, который мы только что создали. Директория `config` содержит параметры конфигурации, папка `lib` — это там, где мы будем писать большую часть нашего кода на Elixir, а в директории `test` находятся тесты, которые позволяют нам удостовериться в том, что приложение работает так, как предполагалось.
 
-## Elixir Testing
+## Тестирование в Elixir
 
-Depending on which programming languages you've worked with in the past, you
-may have a lot of experience writing tests, or perhaps not.
+Вне зависимости от того, с какими языками программирования вы работали в прошлом, у вас, возможно, есть большой опыт написания тестов.
 
-If you haven't written tests before, the basic idea is that tests give us a way
-to feel confidence that our code is actually working as expected. We write our
-expectations (or "assertions"), and they give us a quick way to check that the
-code we're writing works (and doesn't break other code). We'll delve deeper
-into testing with our Phoenix app later, but for now let's just try it out.
+Если ранее вы не писали тесты, основная идея является то, что тесты дают возможность почувствовать уверенность в том, что код действительно работает так, как ожидалось. Мы пишем наши предположения (или «утверждения»), которые дают нам быстрый способ проверить, работает ли должным образом написанный нами код (и не нарушает ли он работу другого кода). Позже мы углубимся в тестирование с нашим приложением Phoenix, но сейчас давайте просто попробуем тесты в действии.
 
-Run the `mix test` command inside the `temporary` folder:
+Запустите команду `mix test` внутри директории `temporary`:
 
 ```shell
 $ mix test
 ```
 
-The output should look something like this:
+Вывод должен быть примерно таким:
 
 ```shell
 $ mix test
@@ -92,17 +73,11 @@ Finished in 0.03 seconds
 Randomized with seed 670956
 ```
 
-## Elixir Compilation
+## Компиляция Elixir
 
-Here's where we'll start to see some key features of Elixir. First, we can see
-that Elixir is a _compiled_ language. The first time we run our code after
-making changes, Elixir needs to compile it to Erlang bytecode. This can be really
-helpful because it means we'll catch errors early instead of having to debug our
-app while we're using it.
+В этом разделе мы начнем знакомиться с некоторыми ключевыми особенностями Elixir. Во-первых, мы увидим, что Elixir — это _компилируемый_ язык. Когда мы в первый раз запускаем наш код после внесения изменений, Elixir должен скомпилировать его в байт-код Erlang. Это может быть очень полезно, потому что означает, что мы скорее будем отлавливать ошибки, чем отлаживать приложение время его использования.
 
-In fact, if we run the `mix test` command again, we'll see that Elixir doesn't
-need to recompile the code because we haven't made any changes (note the line
-about compiling files is now missing):
+На самом деле, если мы снова запустим команду `mix test`, то увидим, что Elixir не нужно перекомпилировать код, потому что мы не внесли никаких изменений (обратите внимание, что строка о компиляции файлов теперь отсутствует):
 
 ```shell
 $ mix test
@@ -114,15 +89,11 @@ Finished in 0.03 seconds
 Randomized with seed 114557
 ```
 
-## Elixir Modules and Functions
+## Модули и функции Elixir
 
-The Elixir code that we'll write in this project is contained in the
-`lib/temporary.ex` file. Files that end in `.ex` are Elixir files that will be
-compiled and run (you'll also notice that we have files that end in `.exs`,
-which are Elixir scripts).
+Код Elixir, который мы напишем в этом проекте, находится в файле `lib/temporary.ex`. Файлы с расширением `.ex` — это файлы Elixir, которые будут скомпилированы и запущены (вы также заметите, что у нас есть файлы с расширением `.exs`, представляющие собой скрипты Elixir).
 
-Inside the `lib/temporary.ex` file, we see the basic structure for _all_ the
-Elixir programs that we'll be writing.
+Внутри файла `lib/temporary.ex` мы видим базовую структуру для _всех_ программ Elixir, которые мы будем писать.
 
 ```elixir
 defmodule Temporary do
@@ -145,7 +116,7 @@ defmodule Temporary do
 end
 ```
 
-We start out with a **module** that encapsulates our related code:
+Начнем с **модуля**, который инкапсулирует соответствующий код:
 
 ```elixir
 defmodule Temporary do
@@ -153,8 +124,7 @@ defmodule Temporary do
 end
 ```
 
-If we ignore the documentation for now, we'll see that we have one
-**function**:
+Если пока игнорировать комментарии с документацией, мы увидим одну **функцию**:
 
 ```elixir
 def hello do
@@ -162,15 +132,13 @@ def hello do
 end
 ```
 
-Inside that function, we have our **return value**:
+Внутри этой функции есть **возвращаемое значение**:
 
 ```elixir
 :world
 ```
 
-Let's start making some changes. Rename the `hello` function to `add`. We'll
-pass two parameters (`x` and `y`), and we'll return the addition of these two
-values using `x + y` inside the function:
+Давайте начнем вносить некоторые изменения. Переименуйте функцию `hello` на `add`. Передадим два параметра (`x` и `y`) и вернем сложение этих двух значений, используя выражение `x + y` внутри функции:
 
 ```elixir
 def add(x, y) do
@@ -178,14 +146,11 @@ def add(x, y) do
 end
 ```
 
-## Functions, Tests, and Documentation
+## Функции, тесты и документация
 
-The example above is admittedly simple, but it's good in the sense that we
-know how to create a function now. But how do we use it?
+Приведенный выше пример, конечно, простой, но он хорош потому что мы теперь знаем, как создать функцию. Но каким образом мы будем их использовать?
 
-We generally use the `Module.function(arguments)` syntax to invoke the
-functions we've declared. If we look at the original documentation for our
-`hello` function, we can see the example usage:
+Как правило, мы используем синтаксис вида `Module.function(arguments)` для вызова объявленных функций. Если мы посмотрим на изначальную документацию для нашей функции `hello`, то увидим пример использования:
 
 ```elixir
 defmodule Temporary do
@@ -208,18 +173,13 @@ defmodule Temporary do
 end
 ```
 
-This tells us that we should be able to run `Temporary.hello()` and it should
-return `:world`. This is where things get interesting, so let's run `mix test`
-again:
+Часть комментария с примером использования указывает на то, что если мы выполним строчку кода `Temporary.hello()`, то она вернет `:world`. Вот тут начинается самое интересное, поэтому давайте снова запустим `mix test`:
 
 ```shell
 $ mix test
 ```
 
-Since we no longer have our `hello` function, it's not surprising that our
-tests failed. But we actually have _two_ test failures. One of them is from the
-test file located in the `test` folder, but the other failure is actually
-coming from the example in our documentation (which is called a **doctest**).
+Поскольку больше нет функции `hello`, неудивительно, что тесты не прошли. На самом деле у нас _два_ неудачных теста. Один из них взят из тестового файла в директории `test`, в то время как другой в действительности взялся из примера использования в документации (который называется **doctest**).
 
 ```shell
 $ mix test
@@ -247,8 +207,7 @@ Finished in 0.04 seconds
 Randomized with seed 520513
 ```
 
-Let's update the documentation so it shows an example of how to use our new
-`add` function:
+Давайте обновим документацию, чтобы она отражала реальный пример использования новой функции `add`:
 
 ```elixir
 defmodule Temporary do
@@ -271,8 +230,7 @@ defmodule Temporary do
 end
 ```
 
-We can run our tests again, and the doctest example in our `lib/temporary.ex`
-file should now be passing:
+Можно снова запустить тесты, и на этот раз доктест в `lib/temporary.ex` должен пройти:
 
 ```shell
 $ mix test
@@ -294,15 +252,11 @@ Finished in 0.03 seconds
 Randomized with seed 682227
 ```
 
-Doctests are an _awesome_ feature of Elixir. They allow us to write our
-functions _and_ document them _and_ test that they work all at once! It
-encourages us to write and maintain our documentation, and gives us confidence
-that our code is actually doing what we think it is.
+Доктесты — потрясающая _возможность_ Elixir, позволяющая нам одновременно _и_ документировать, _и_ проверять работу функции! Это вдохновляет нас писать и поддерживать документацию, а также придает уверенность в том, что наш код действительно делает то, что мы задумали.
 
-## Writing Tests
+## Написание тестов
 
-Let's write a few tests to ensure that our `add` function is working as
-intended. Open the `test/temporary_test.ex` file and add the following:
+Давайте напишем несколько тестов, чтобы убедиться, что наша функция добавления работает так, как должна. Откройте файл `test/temporary_test.ex` и добавьте следующий код:
 
 ```elixir
 defmodule TemporaryTest do
@@ -327,23 +281,11 @@ defmodule TemporaryTest do
 end
 ```
 
-Looking at the `test/temporary_test.exs` file, note that the test code still
-takes the same general format we used in `lib/temporary.ex`, where we have a
-module defined at the top that encapsulates the rest of our code. We also see
-that we're using the default [`ExUnit`](https://hexdocs.pm/ex_unit/ExUnit.html)
-library to write our tests. Then, there's the `doctest Temporary` line, which
-is how the tests knew to run the examples we were writing in our documentation.
+Рассмотрите содержимое файла `test/temporary_test.exs` и обратите внимание, что тестовый код по-прежнему имеет тот же общий формат, который мы использовали в `lib/temporary.ex`, где у нас есть определение модуля в самом вверху, содержащий остальную часть кода. Мы также видим, что используем стандартную библиотеку [`ExUnit`](https://hexdocs.pm/ex_unit/ExUnit.html) для написания тестов. Кроме этого, есть строчка `doctest Temporary`, чтобы тесты знали, как выполнять примеры, написанные в документации.
 
-The three `test` cases show basic examples of how we can call our function with
-some example numbers and verify that the result is correct. For example,
-passing `1` and `1` as arguments to our `add` function should return a result
-of `2`. There are other
-[assertions](https://hexdocs.pm/ex_unit/ExUnit.Assertions.html) that `ExUnit`
-provides, but we'll stick with `assert` for now to ensure that we're getting a
-`true` value from our tests.
+В трех тестовых сценариев (`test`) показаны простые примеры того, как мы можем вызывать функцию с некоторыми примерами чисел и проверять правильность результата. Например, передача `1` и `1` в качестве аргументов функции `add` должна вернуть результат `2`. Есть и другие [утверждения](https://hexdocs.pm/ex_unit/ExUnit.Assertions.html), предоставляемые `ExUnit`, но пока мы остановимся на `assert` с целью проверить на значение `true` в наших тестах.
 
-We should be able to run our tests again and see that all three of these test
-cases are passing (and the doctest is still passing as well):
+Теперь, если мы снова запустим тесты, то увидим, что все три из этих тестовых вариантов проходят (включая и доктест):
 
 ```shell
 $ mix test
@@ -357,22 +299,15 @@ Randomized with seed 867380
 
 ## IEx
 
-How would we run our code in an interactive environment? The tests are doing a
-good job of testing values, but what if something wasn't working the way we had
-expected? Let's run the following command from inside our `temporary` project
-folder:
+Как бы нам запустить код в интерактивной среде? Тесты хорошо подходят для проверки значений, но что, если что-то не работает так, как мы ожидали? Давайте запустим следующую команду из директории проекта `temporary`:
 
 ```shell
 $ iex -S mix
 ```
 
-This allows us to run Elixir code in an interactive environment and see the
-results (you can also just use `iex` from the command line to get started, but
-using `iex -S mix` is preferable because it means we don't have to manually
-import the modules we want to work with).
+Эта команда позволяет запускать код Elixir в интерактивной среде и просматривать результаты (вы также можете использовать просто `iex` из командной строки для начала, но использование `iex -S mix` предпочтительнее, поскольку тогда нам не нужно вручную импортировать модули, с которыми мы хотим работать).
 
-Here's an example where we are basically recreating our first `test` case to
-call the `add` function from the `Temporary` module and see the result:
+Вот пример, где мы в основном повторяем наш первый тестовый случай, который вызывает функцию `add`, определенную в модуле `Temporary`, чтобы увидеть такой результат:
 
 ```elixir
 $ iex -S mix
@@ -381,30 +316,20 @@ iex(1)> Temporary.add(1, 1)
 2
 ```
 
-We can try our second example case too:
+Мы также можем попробовать второй тестовый пример:
 
 ```elixir
 iex(2)> Temporary.add(1.5, 1.5)
 3.0
 ```
 
-Everything works as expected in the tests, and now we have an interactive way
-of checking our code too. Feel free to tinker around with writing some Elixir
-code in the interactive environment, and then press `Control + C` twice on your
-keyboard when you're ready to exit.
+В тестах все работает как ожидается, а теперь мы еще узнали про интерактивный способ проверки кода. Не стесняйтесь писать какой-нибудь Elixir-кода в интерактивной среде, а затем дважды нажмите сочетание клавиш `Control + C`, когда захотите выйти.
 
-## The Pipe Operator
+## Оператор конвейера
 
-Our third `test` case uses a common pattern seen in programming. We break up our
-code into small chunks, and we assign the values to variables. This has a great
-benefit of being able to name things in obvious ways, but Elixir has an
-alternative approach that helps us reconsider the way we write code.
+В нашем третьем тесте используется распространенная модель программирования — мы разбиваем код на маленькие фрагменты и присваиваем значения переменным. Такой подход имеет большое преимущество, связанный с возможностью именования очевидными способами, но в Elixir есть альтернативный подход, помогающий нам пересмотреть метод написания кода.
 
-The idea behind the "pipe operator" (`|>`) is that it encourages us to think
-about our functions in terms of data transformation. Instead of using
-variables, we take an initial value, pipe it through a handful of functions,
-and return the result at the end. Let's take another look at our third `test`
-case:
+Идея «оператора конвейера» (`|>`) заключается в том, что он стимулирует нас думать о функциях с точки зрения преобразования данных. Вместо использования переменных, мы берем начальное значение, передаем его через небольшое количество функций и в конце возвращаем результат. Давайте еще раз посмотрим на третий сценарий:
 
 ```elixir
 test "the add function returns a number" do
@@ -414,9 +339,7 @@ test "the add function returns a number" do
 end
 ```
 
-This example was intentionally written with extraneous variables that aren't
-particularly necessary. Let's use the pipe operator syntax, keeping in mind
-that the code is still going to accomplish the same thing:
+Этот пример намеренно написан, используя дополнительные переменные, которые не особенно нужны. Давайте вместо этого воспользуемся синтаксисом оператора конвейера, с учетом того, что код все еще делает то же самое:
 
 ```elixir
 test "the add function returns a number" do
@@ -426,12 +349,9 @@ test "the add function returns a number" do
 end
 ```
 
-Whoa. What's happening here? Instead of using variables, we're evaluating a
-result and then using the `|>` to pass it along as the argument to the next
-function.
+Вау! И что здесь происходит? Вместо того, чтобы использовать переменные, мы сначала вычисляем результат, а затем используем `|>` для передачи его как аргумент следующей функции.
 
-It also enables us to take the data and "pipe it through" other functions. For
-example, let's inspect what value is getting passed to `assert` at the end:
+Данный оператор также позволяет получать данные и передавать их другим функциям. Например, давайте проверим, какое значение передается `assert` в конце:
 
 ```elixir
 test "the add function returns a number" do
@@ -442,7 +362,7 @@ test "the add function returns a number" do
 end
 ```
 
-We can run `mix test` from the command line to see the results:
+Можно выполнить `mix test` из командной строки, чтобы увидеть результаты:
 
 ```shell
 $ mix test
@@ -455,18 +375,13 @@ Finished in 0.03 seconds
 Randomized with seed 312071
 ```
 
-That explains why our test is passing, because `true` is getting passed to the
-`assert` function.
+Это объясняет, почему тест проходит, поскольку `true` передается в функцию `assert`.
 
-## More Piping
+## Больше конвейерной обработки
 
-These are simple examples, because these functions each expect a single
-argument. But what if we want to pipe to a function that takes multiple
-arguments? When we use the pipe operator in Elixir, it pipes the value as the
-_first_ argument in the next function.
+Это простые примеры, потому что каждая из этих функций по одному аргументу. Но что, если мы хотим передать функцию, принимающая несколько аргументов? При использовании оператора конвейера в Elixir, он передает значение в качестве _первого_ аргумента в следующую функцию.
 
-In other words, we could actually refactor our test case to pass the first
-value like this:
+Другими словами, мы могли бы изменить код теста с целью передать первое значение, как показано ниже:
 
 ```elixir
 test "the add function returns a number" do
@@ -478,13 +393,9 @@ test "the add function returns a number" do
 end
 ```
 
-This demonstrates that we can pipe the value `1.5` to the `Temporary.add`
-function, and it will use the value as the _first_ argument. And `3.5` will be
-sent as the _second_ argument to the `Temporary.add` function.
+Обновленный код теста демонстрирует, что мы можем передать значение `1.5` в функцию `Temporary.add`, и данное значение будет использоваться в качестве _первого_ аргумента, когда как значение `3.5` будет передано _вторым_ аргументом функции `Temporary.add`.
 
-Before we move on, let's go back to the original pipe operator example since it
-was cleaner code. But the examples above are an important demonstration of how
-we can use the pipe operator.
+Прежде чем мы продолжим, давайте вернемся к изначальному примеру оператора конвейера, поскольку это более чистый код. Но приведенные выше примеры являются важной демонстрацией того, как мы можем использовать оператор конвейера.
 
 ```elixir
 test "the add function returns a number" do
@@ -494,31 +405,19 @@ test "the add function returns a number" do
 end
 ```
 
-## Function Arity
+## Арность функций
 
-In this book, we've referred to functions like the `add` function as simply
-`add`. But functions in Elixir are often referred to in terms of their "arity".
+В этой книге мы обращались к таким функциям (например, функция `add`), как просто `add`. Но функции в Elixir часто дают обозначают в соответствии с их «арностью».
 
-The arity of a function is the number of arguments it takes. In our examples
-above, the `add` function takes two arguments, so it would be referred to as
-`add/2`. The `is_number` function only takes a single argument, so we
-would refer to it as `is_number/1`.
+Арность функции — это количество аргументов, которые она принимает. В вышеприведенных примерах функция `add` принимает два аргумента, поэтому она будет именоваться в тексте `add/2`. Функция `is_number` принимает только один аргумент, поэтому мы бы ее именовали как `is_number/1`.
 
-For the rest of the book, we'll try to be consistent about referring to
-functions with their arity included, because the arity is of particular
-importance in the Elixir language. In fact, we can define multiple functions
-that share the same name, but behave differently depending on the number of
-arguments we pass to them. This can be a tricky concept at first, but we'll see
-some examples soon that should help to clarify.
+В остальной части книги с целью соблюдения единообразия, мы будем ссылаться на функции, учитывая их арность, поскольку она имеет особое значение в языке Elixir. Кстати, мы можем определить несколько функций с одним и тем же именем, но с различным поведением в зависимости от количества переданных аргументов. Поначалу это может показаться сложной концепцией, однако вскоре мы увидим несколько примеров, которые помогут прояснить эту идею.
 
-## Shorthand Function Syntax
+## Сокращенный синтаксис определения функции
 
-At this point, we're probably dying to get back to Phoenix and build our
-application. But there are just a couple more Elixir topics that will help
-us when we start looking at our Phoenix code. Without knowing the concepts
-behind Elixir, it can be tough to really understand what's going on in Phoenix.
+На данный момент мы, вероятно, очень хотим вернуться в Phoenix и разрабатывать наше приложение. Но есть еще пара тем из Elixir, которые помогут нам в изучении код на Phoenix. Не зная концепций, лежащих в основе Elixir, в действительности сложно понять, что происходит в Phoenix.
 
-The functions we've seen so far take the following format:
+Функции, которые мы видели до сих пор, имели следующий формат:
 
 ```elixir
 def function_name(arguments) do
@@ -526,70 +425,45 @@ def function_name(arguments) do
 end
 ```
 
-When we're dealing with small, simple functions like `add/2`, we can make our
-code more concise and readable by using the shorthand function syntax:
+Когда мы имеем дело с небольшими простыми функциями, такими как `add/2`, возможно сделать код более кратким и читаемым, если использовать сокращенный синтаксис объявления функции:
 
 ```elixir
 def function_name(arguments), do: ...
 ```
 
-Note that there are extra `,` and `:` characters, but this enables us to remove
-the `end` keyword and move our entire function definition to a single line.
+Обратите внимание, что есть дополнительные символы `,` и `:`, использование которых позволит нам удалить ключевое слово `end` и написать все тело функции в одну строку.
 
-Here's our `add/2` function as a single line. You can update our example in the
-`lib/temporary.ex` file and then run `mix test` again to verify that it still
-works.
+Ниже функция `add/2`, написанная в виде одной строки. Вы можете обновить пример в файле `lib/temporary.ex`, а затем снова запустить команду `mix test`, чтобы убедиться, что он все еще работает.
 
 ```elixir
 def add(x, y), do: x + y
 ```
 
-There aren't strict rules about when you should use shorthand function syntax.
-On the one hand, it's good practice to break up our programs into small
-functions that are easy to reason about, which could mean many of our functions
-fit well on a single line. However, we shouldn't feel compelled to force
-multiline functions to fit on a single line arbitrarily. The reason we're
-introducing this concept now is that the `add/2` function will be easier to
-visualize and reason about in the next section when using the shorthand
-function syntax.
+Нет строгих правил относительно того, когда нужно использовать сокращенный синтаксис объявления функции. С одной стороны, хорошая практика — разделять программы на небольшие функции, которые становятся легче для понимания, а это значит, что многие функции хорошо вписываются в одну строку. Однако вам необязательно стремится писать многострочные функции в одну строку. В данный момент мы знакомимся с этой концепцией, потому что функцию `add/2` будет проще визуально представить и объяснять в следующем разделе при использовании сокращенного синтаксиса определения функции.
 
-## Pattern Matching
+## Сопоставление с образцом
 
-The reason for introducing shorthand function syntax here is that it gives us
-a more obvious way to see one of Elixir's most powerful features in action:
-pattern matching.
+Причина применения сокращенного синтаксиса определения функции — это более очевидный способ узнать одну из самых мощных возможностей Elixir в действии: сопоставление с образцом.
 
-Pattern matching can be difficult to comprehend at first, so be gentle with
-yourself if it takes some time to understand. It's one of those things that
-needs to be seen and experienced a couple of times before it starts to sink in.
+Поначалу метод сопоставления с образцом может быть трудным для понимания, поэтому будьте нежны с самим собой, если потребуется какое-то время для понимания. Это одна из тех тем, которую нужно увидеть и испытать пару раз, прежде чем ее поймешь.
 
-Elixir allows us to create multiple "clauses" of our functions. That means we
-can create a new clause of our `add/2` function, and Elixir will use pattern
-matching to determine which clause actually gets used when the function is
-called. It sounds confusing, so let's see an example.
+Elixir позволяет нам создавать несколько «условий» функций. Это означает, что можно создать новое условие для функции `add/2`, и тогда Elixir будет использовать сопоставление с образцом для определения, какое из условий нужно использовать при вызове функции. Это звучит странно, поэтому давайте рассмотрим пример.
 
-When we add `0` to a number, the result is actually just the number itself
-(this is known as _the identity property of addition_). So `0 + 1` should
-return a result of `1`. When we use the `add/2` function, it would look like
-this:
+Когда мы добавляем `0` к числу, фактически результатом является просто само число (это еще известно как _тождественное свойство сложения_). Так что выражение `0 + 1` должно вернуть результат `1`. При использовании функции `add/2`, такой случай использования будет таким:
 
 ```elixir
 iex> Temporary.add(0, 1)
 1
 ```
 
-That means whenever we pass `0` as an argument to our function, we don't really
-need to perform any addition. We can add a new clause for our `add/2` function
-that handles cases where the first argument is `0`:
+Это означает, что всякий раз, когда мы передаем `0` в качестве аргумента функции, нам не нужно выполнять каких-либо операций сложения. Можно добавить новое условие для нашей функции `add/2`, которая обрабатывает случаи, когда первый аргумент равен `0`:
 
 ```elixir
 def add(0, y), do: y
 def add(x, y), do: x + y
 ```
 
-On the first line, we're basically just ignoring the `0` argument and returning
-the value of `y` for the result. Next, we can do the same thing when the second
-argument is `0`:
+В первой строчке мы просто игнорируем аргумент `0` и возвращаем значение `y` как результат. Далее можно сделать аналогичное, когда второй аргумент равен `0`:
 
 ```elixir
 def add(0, y), do: y
@@ -597,9 +471,7 @@ def add(x, 0), do: x
 def add(x, y), do: x + y
 ```
 
-On the second line, we ignore the `0` argument again and just return the value
-of `x` for the result. Next, we can even add another clause that "matches" for
-when both arguments are `0`s:
+Во второй строчке мы снова игнорируем аргумент `0` и просто возвращаем значение `x`. Далее, мы можем даже добавить еще одно условие, которое «соответствует», когда оба аргумента представлены значением `0`:
 
 ```elixir
 def add(0, 0), do: 0
@@ -608,8 +480,7 @@ def add(x, 0), do: x
 def add(x, y), do: x + y
 ```
 
-And here's our full example with a few more doctests to verify that everything
-is working as expected:
+И, наконец, полная версия примера с несколькими дополнительными доктестами для проверки того, что все работает как ожидается:
 
 ```elixir
 defmodule Temporary do
@@ -641,17 +512,13 @@ defmodule Temporary do
 end
 ```
 
-## Guards
+## Ограничители
 
-Lastly, Elixir allows us to add "guard clauses" to our functions to make sure
-they're working with the right values.
+Наконец, Elixir позволяет нам добавлять «операторы-ограничители» в функциях, чтобы убедиться, что они работают с правильными значениями.
 
-Our `add/2` function is only designed to work with numbers. They can be integers
-or floating point numbers, but we don't want to add strings together (string
-concatenation would actually require the use of the `<>` operator).
+Функция `add/2` предназначена только для работы с числами. Они могут быть целыми числами или числами с плавающей запятой, но мы не хотим добавлять строки вместе (конкатенация строк фактически потребует использования оператора `<>`).
 
-We can use the `when` keyword along with the `is_number/1` function we saw
-previously to make sure that our function is working with numerical values.
+Мы можем использовать ключевое слово `when` вместе с функцией `is_number/1`, которую мы видели ранее, для того, чтобы указать, что данная функция работает только с числовыми значениями.
 
 ```elixir
 def add(0, 0), do: 0
@@ -660,10 +527,7 @@ def add(x, 0) when is_number(x), do: x
 def add(x, y) when is_number(x) and is_number(y), do: x + y
 ```
 
-Functions like `is_number/1` can be really helpful to check the types of values
-we're working with. One helpful tip is to find similar functions available to
-us using `iex`. Inside `iex`, type `is_` and then hit the TAB key on your
-keyboard, and it will display the different checks that are available:
+Такие функции, как `is_number/1`, могут быть очень полезны для проверки типов значений, с которыми мы работаем. Один полезный совет — найти похожие функции, доступные с помощью `iex`. Внутри `iex` введите `is_`, а затем нажмите клавишу TAB и она отобразит различные доступные проверки:
 
 ```elixir
 $ iex
@@ -675,22 +539,14 @@ is_list/1         is_map/1          is_nil/1          is_number/1
 is_pid/1          is_port/1         is_reference/1    is_tuple/1
 ```
 
-## Summary
+## Резюме
 
-This chapter was intended to give a brief introduction to Elixir concepts. These
-will be invaluable as we start building our Phoenix applications, because we'll
-see that Phoenix code is really just Elixir code. Without some background in
-Elixir, it can occasionally be difficult to understand what's going on.
+Эта глава предназначена, чтобы дать краткое введение в концепции Elixir. Они будут неоценимы, когда мы начнем создавать приложения с помощью Phoenix, потому что мы увидим, что код Phoenix 
+— это на самом деле просто код на Elixir. Без некоторого опыта в Elixir иногда бывает трудно понять, что же происходит.
 
-This was not meant as exhaustive introduction to Elixir. There are many more
-concepts, and there are several books available that give a full introduction
-to the language. In this book, we're going to keep moving because our goal is
-to build a practical real-world application, and we'll learn what we need along
-the way. But check out these free resources if you want to get a little
-more Elixir experience before continuing:
+Текущая глава не задумывалась как исчерпывающее введение в Elixir. Есть еще много концепций, а также несколько книг, которые дают полное введение в язык. В этой книге мы продолжим двигаться дальше, потому что наша цель — создать реальное практическое приложение. Однако обратите внимание на бесплатные ресурсы ниже, если вы хотите получить немного больше опыта с Elixir, перед тем, как продолжить:
 
-- [Elixir Getting Started Guide](http://elixir-lang.org/getting-started/introduction.html)
-- [Elixir School](https://elixirschool.com/en/lessons/basics/basics)
+- [Руководство по началу работы с Elixir (на англ.)](http://elixir-lang.org/getting-started/introduction.html)
+- [Elixir School](https://elixirschool.com/ru/lessons/basics/basics)
 
-Feel free to delete the `temporary` project, and in the next chapter we'll
-continue working towards building our platform application.
+Можете спокойно удалить временный проект `temporary`, а в следующей главе мы продолжим работу по созданию приложения для игровой платформы.
