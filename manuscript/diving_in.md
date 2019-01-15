@@ -39,25 +39,25 @@ Fetch and install dependencies? [Yn] Y
 * running mix deps.get
 * running mix deps.compile
 * running cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
-```
 
-У нас все готово! Зайдите в приложение путем его запуска:
+We are all set! Go into your application by running:
 
     $ cd platform
 
-Затем настройте базу данных в файле `config/dev.exs` и выполните команду ниже:
+Then configure your database in config/dev.exs and run:
 
     $ mix ecto.create
 
-Запустите приложение на Phoenix следующим образом:
+Start your Phoenix app with:
 
     $ mix phx.server
 
-Вы также можете запустить приложение внутри IEx (Interactive Elixir) вот так:
+You can also run your app inside IEx (Interactive Elixir) as:
 
     $ iex -S mix phx.server
+```
 
-Phoenix отображает _много_ полезной информации. Во-первых, в выводе отображаются все сгенерированные файлы (не беспокойтесь, если на первый взгляд вывод кажется огромным; мы начнем только с нескольких этих файлов). Затем мы видим некоторую информацию о том, как настроить базу данных и запустить сервер.
+Phoenix отображает _много_ полезной информации. Во-первых, в выводе отображаются все сгенерированные файлы (не беспокойтесь, если на первый взгляд вывод кажется огромным; мы начнем только с нескольких этих файлов). Затем мы видим информацию о том, как настроить базу данных и запустить сервер.
 
 ## Настройка базы данных
 
