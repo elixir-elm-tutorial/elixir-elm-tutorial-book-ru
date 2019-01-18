@@ -1,25 +1,18 @@
-# Contact
+# Контакты
 
-## Congrats
+## Поздравления
 
-Congrats on making it all the way to the end of the book. I'd _really_ love to
-hear from you!
+Поздравляю с окончанием чтения книги. Мне бы _очень_ хотелось получить от вас отзывы о книге!
 
-We managed to accomplish our goal of building a fun project together and learn
-a lot about functional web programming along the way.
+Нам удалось достичь поставленной цели — вместе на протяжении книги создать интересный проект и узнать много нового о функциональном веб-программировании.
 
-## Feedback
+## Замечания и предложения
 
-Were there additional concepts you'd like to have seen covered in the material?
-Were there parts of the book that felt confusing? Was there something we could
-have done differently in our approach?
+Есть дополнительные концепции, о которых вы хотели бы прочитать в этой книге? Были ли какие-то части книги, которые вызывали путаницу? Что-то можно было сделать иначе?
 
-If you have any feedback about the book's content or the demos contained
-within, then feel free to reach out.
+Если у вас есть какие-либо отзывы по содержанию книги или демонстрационному приложению, не стесняйтесь написать об этом.
 
-One simple way to provide feedback is to email the author directly at
-`bijanbwb@gmail.com`. Alternatively, feel free to create GitHub issues in
-either the book's content repository or the demo repository:
+Один из простейших способов поделиться своим мнением — написать автору по электронной почте `bijanbwb@gmail.com`. В качестве альтернативы, не стесняйтесь создавать ишью в соответствующих репозиториях на GitHub:
 
-- [Book Content Issues](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book/issues)
-- [Platform Demo Issues](https://github.com/elixir-elm-tutorial/platform/issues)
+- [Список ишью по содержанию книги](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book/issues)
+- [Список ишью по демонстрационному приложению платформы](https://github.com/elixir-elm-tutorial/platform/issues)
