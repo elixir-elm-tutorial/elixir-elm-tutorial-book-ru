@@ -1,32 +1,22 @@
-# Appendix {#appendix}
+# Приложение {#appendix}
 
-## Quick Install
+## Быстрая установка
 
-This book is intended for developers with some previous experience, so
-installing these languages and tools shouldn't be overly difficult or
-time-consuming. Having said that, it's easy to get tripped up with installation
-and configuration steps, so feel free to
-[create a GitHub issue](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book/issues)
-if you think there's an easier approach to setting things up.
+Эта книга предназначена для разработчиков, у которых есть некий предыдущий опыт разработки, поэтому установка перечисленных ниже языков и инструментов не должна быть слишком сложной или трудоемкой. При этом легко запутаться в действиях по установке и настройке, поэтому не стесняйтесь [открыть ишью в репозитории на GitHub](https://github.com/elixir-elm-tutorial/elixir-elm-tutorial-book/issues), если вы думаете, что есть более простой способ установки.
 
-The intention for this chapter is to get everything we'll need installed
-quickly so we can start creating Phoenix projects.
+Цель этой главы — быстро установить всё, что нужно для того, чтобы мы могли приступить к созданию проектов на Phoenix.
 
-These instructions assume that you're running macOS, but instructions can also
-be found online for installing these tools on Linux.
+В данных инструкциях предполагается, что используется macOS, но аналогичные инструкции по установке в системах на Linux можно найти в интернете.
 
 ### Elixir
 
-First, let's install [Elixir](https://elixir-lang.org) with
-[Homebrew](https://brew.sh). This command will also install the latest version
-of [Erlang](https://www.erlang.org) as a dependency:
+Сначала давайте установим [Elixir](https://elixir-lang.org) вместе с [Homebrew](https://brew.sh). Эта команда также установит последнюю версию [Erlang](https://www.erlang.org) в качестве зависимости:
 
 ```shell
 $ brew install elixir
 ```
 
-You can verify that Elixir has been installed properly by running the following
-command:
+Вы можете проверить правильность установки Elixir, если выполните следующую команду:
 
 ```shell
 $ elixir -v
@@ -34,131 +24,91 @@ Erlang/OTP 20
 Elixir 1.7.0
 ```
 
-Any trouble with this step? Check out the
-[Elixir install page](https://elixir-lang.org/install.html) or the
-[Elixir section of Stack Overflow](https://stackoverflow.com/questions/tagged/elixir).
+Есть проблемы с выполнением этого шага? Посетите [страницу установки Elixir](https://elixir-lang.org/install.html) или
+[раздел, посвященный Elixir на Stack Overflow](https://stackoverflow.com/questions/tagged/elixir).
 
 ### Hex
 
-[Hex](https://hex.pm) is the package manager for the Elixir and Erlang
-ecosystems. Once you have Elixir installed, it's easy to install Hex with the
-following command:
+[Hex](https://hex.pm) — менеджер пакетов для экосистем Elixir и Erlang. После того, как вы установили Elixir, установить Hex легко с помощью данной команды:
 
 ```shell
 $ mix local.hex
 ```
 
-Any trouble with this step? Check out the
-[Hex section of Stack Overflow](https://stackoverflow.com/questions/tagged/hex-pm).
+Есть проблемы с выполнением этого шага? Изучите [раздел, посвященный Hex на Stack Overflow](https://stackoverflow.com/questions/tagged/hex-pm).
 
 ### Phoenix
 
-[Phoenix](http://phoenixframework.org) is a web application framework built
-with the Elixir language. You can install the latest version with the following
-command:
+[Phoenix](http://phoenixframework.org) — фреймворк для веб-приложений, созданный на языке Elixir. Вы можете установить последнюю версию с помощью следующей команды:
 
 ```shell
 $ mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 ```
 
-You can verify that Phoenix has been installed properly by running the
-`mix help` command, and you should be able to see a `mix phx.new` task that will
-allow us to create new Phoenix applications.
+Для проверки правильности установки Phoenix, выполните команду `mix help`, и вы сможете увидеть задачу `mix phx.new`, позволяющая создавать новые Phoenix-приложения.
 
-Any trouble with this step? Check out the
-[Phoenix installation docs](https://hexdocs.pm/phoenix/installation.html) or the
-[Phoenix section of Stack Overflow](https://stackoverflow.com/questions/tagged/phoenix-framework).
+Есть проблемы с выполнением этого шага? Посмотрите [документацию по установке Phoenix](https://hexdocs.pm/phoenix/installation.html) или
+[раздел, посвященный Phoenix на Stack Overflow](https://stackoverflow.com/questions/tagged/phoenix-framework).
 
 ### PostgreSQL
 
-We'll be using [PostgreSQL](https://www.postgresql.org) for our database. The
-easiest way to get started if you're new to PostgreSQL is to use
-[**Postgres.app**](https://postgresapp.com). It's a macOS application that
-makes it really simple to get PostgreSQL up and running, and also creates a
-`postgres` user that Phoenix uses as a default when creating databases.
+Мы будем использовать [PostgreSQL](https://www.postgresql.org) в качестве нашей базы данных. Если вы новичок в PostgreSQL, проще всего начать с использования [**Postgres.app**](https://postgresapp.com). Это macOS-приложение, значительно упрощающее запуск и использование PostgreSQL, а также создает пользователя `postgres`, который Phoenix использует по умолчанию при создании баз данных.
 
-Any trouble with this step? Check out the
-[PostgreSQL detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
-or the [PostgreSQL section of Stack Overflow](https://stackoverflow.com/questions/tagged/postgresql).
+Есть проблемы с выполнением этого шага? Ознакомьтесь с [подробными руководствами по установке PostgreSQL](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+или [с разделом PostgreSQL на Stack Overflow](https://stackoverflow.com/questions/tagged/postgresql).
 
-## Working with Versions
+## Работа с версиями
 
-The steps above should be all that's required to get started. If you're
-interested in working with multiple versions different languages,
-check out the [asdf version manager](https://github.com/asdf-vm/asdf).
+Описанных шагов должно быть достаточно для начала работы. Если вы заинтересованы в работе с несколькими версиями на разных языках, посмотрите на [менеджер версий asdf](https://github.com/asdf-vm/asdf).
 
-## Recommended Tools
+## Рекомендуемые инструменты
 
-Throughout this book, we opt for a simple approach to afford ourselves an
-opportunity to learn about Elixir, Phoenix, and Elm as we put together a demo
-application. As you start to develop more involved projects, it's a good idea
-to review additional tools and services that can make your life easier.
+На протяжении всей этой книги мы выбираем простой подход, чтобы позволить себе возможность узнать об Elixir, Phoenix и Elm при создании демонстрационного приложения. Когда вы начнете разрабатывать более сложные проекты, рекомендуется изучить дополнительные инструменты и сервисы, которые помогут упростить жизнь.
 
-The [hex.pm](https://hex.pm) package manager is an invaluable tool for finding
-useful libraries for your projects. For example, if you want to allow your
-users to write Markdown syntax, you can look up "Markdown" on hex.pm and find
-that the [Earmark](https://github.com/pragdave/earmark) package works really
-well for this.
+Менеджер пакетов [hex.pm](https://hex.pm) — бесценный инструмент для поиска полезных библиотек для своих проектов. Например, если вы хотите дать возможность вашим пользователям использовать синтаксис Markdown, можно написать в поисковой строке «Markdown» на сайте hex.pm и увидеть пакет [Earmark](https://github.com/pragdave/earmark), который действительно хорошо подходит для этой задачи.
 
-Listed below are additional tools for your consideration.
+Ниже перечислены дополнительные инструменты на ваше рассмотрение.
 
-### Authentication
+### Аутентификация
 
-Want to build more robust authentication features for your application?
-Consider checking out the following options:
+Хотите иметь более надежные возможности аутентификации для своего приложения? Попробуйте использовать следующие библиотеки:
 
 - [ueberauth](https://github.com/ueberauth/ueberauth)
 - [guardian](https://github.com/ueberauth/guardian)
 
-### Authorization
+### Авторизация
 
-We briefly touched on authorizing actions in our demo application. If you need
-to work with additional authorization policies, take the following into
-consideration:
+Мы кратко коснулись авторизационных действий в нашем демонстрационном приложении. Если вам нужно работать с дополнительными политиками авторизации, уделите внимание следующим сервисам:
 
 - [BodyGuard](https://github.com/schrockwell/bodyguard)
 
-### Code Quality
+### Качество кода
 
-Credo is a code quality tool that performs static analysis on your Elixir code
-and provides helpful tips and feedback. It's really helpful as a way to learn
-solid Elixir conventions and keep the code throughout your project consistent.
+Credo — инструмент контроля качества кода, выполняющий статический анализ кода Elixir и дает полезные советы и рекомендации. В реальности этот сервис полезен как способ изучения принятых соглашений в Elixir и поддержания единообразным кода во всем проекте.
 
 - [Credo](https://github.com/rrrene/credo)
 
-### Documentation
+### Документация
 
-Elixir has amazing documentation tools, which explains why the docs are so
-fantastic. Check out the Elixir guide on
-[writing documentation](https://hexdocs.pm/elixir/writing-documentation.html)
-and consider using `ExDoc` to generate docs for your project.
+В Elixir есть замечательные инструменты документирования, объясняющие, почему документация такая классная. Ознакомьтесь с руководством Elixir по [написанию документации](https://hexdocs.pm/elixir/writing-documentation.html) и подумайте насчет использования `ExDoc`, чтобы создать документацию для вашего проекта.
 
 - [ExDoc](https://github.com/elixir-lang/ex_doc)
 
 ### Continuous Integration
 
-Early versions of this book included material on Continuous Integration and
-Continuous Delivery. Although it ended up being outside the scope of our
-content, it's essential to have a CI server to automatically run your tests.
-Check out the following options, and consider hooking them into your GitHub
-repository to automatically deploy your application.
+Ранние версии этой книги содержали информацию о непрерывной интеграции и непрерывной поставки. Несмотря на то, что данный материал выходит за рамки книги, важно иметь CI-сервер для автоматического запуска ваших тестов. Обратите внимание на следующие сервисы и рассмотрите возможность их подключения к вашему GitHub-репозиторию для автоматического развертывания приложения.
 
 - [CircleCI](https://circleci.com)
 - [Semaphore](https://semaphoreci.com)
 
-### Monitoring
+### Мониторинг
 
-Once your project is deployed to production, it's a good idea to monitor the
-performance and watch for errors. AppSignal is a good option for tracking this
-data and keeping your application running smoothly.
+После развертывания проекта в продакшен имеет смысл отслеживать производительность и наблюдать за ошибки. AppSignal в этом случае является хорошим вариантом для контроля за такими данными и обеспечением нормальной работы приложения.
 
 - [AppSignal](https://appsignal.com/elixir)
 
-### Testing
+### Тестирование
 
-Because we used the Phoenix generators to scaffold out our initial features,
-our demo application came with quite a few tests. So we have examples of how
-to work with `ExUnit` in our project, but Wallaby is a great option for writing
-highly readable integration tests concurrently.
+Поскольку мы использовали генераторы Phoenix для разработки первых возможностей, наше демонстрационное приложение включает много тестов. Итак, у нас есть примеры того, как работать с `ExUnit` в нашем проекте, однако Wallaby — это отличный вариант для написания легко читаемых интеграционных тестов в многопоточном режиме.
 
 - [Wallaby](https://github.com/keathley/wallaby)
