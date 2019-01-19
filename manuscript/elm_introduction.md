@@ -1,31 +1,18 @@
-# Elm Introduction
+# Знакомство с Elm
 
-We're going to build the front-end of our application using the Elm language.
-That's going to involve using data from our back-end Phoenix application, and
-decoding it into an Elm front-end application. Then, we'll also use Elm to
-start building minigames for our platform. But before we get into all that,
-let's take a quick look about what Elm is, how it works, and why we're so
-eager to use it.
+Мы собираемся разработать фронтенд для нашего приложения, используя язык Elm. Для этого потребуется использовать данные из уже реализованного бэкенд-приложения на Phoenix и преобразовать их в  фронтенд-приложение на Elm. Далее мы также будем использовать Elm для создания мини-игр для нашей платформы. Но прежде чем мы перейдем ко всему этому, давайте кратко рассмотрим, что такое Elm, как он работает и почему нам всё-же нужно его использовать.
 
-## Introduction
+## Введение
 
-Elm is likely to look and feel a little foreign at first. But don't let that
-scare you away, because it's a _very_ strong language that can be _very_ nice
-to work with.
+Поначалу Elm может выглядеть и казаться себя немного чужим. Но не позволяйте этому чувству спугнуть вас, потому что это _очень_ мощный язык, с которым _очень_ приятно работать.
 
-The design of Elm allows the language to offer things that many other languages
-simply can't. Not only does it enable developers to write code that is free
-from errors, but also results in code that is easier to refactor and more
-maintainable.
+Дизайн Elm предлагает то, что многие другие языки просто не могут. Данный язык позволяет разработчикам писать код, не подверженный ошибкам, который легче рефакторить и поддерживать.
 
-I could go on for months about how great Elm is (and I've done that at my local
-Elm meetup), but let's dive into some basic examples.
+Я мог бы месяцами рассказывать о том, какой хороший Elm (и я сделал это на локальном митапе по Elm), но давайте разберем несколько простых примеров.
 
 ## Hello.elm
 
-We can start with a simple "Hello World" example as a demonstration of how easy
-it can be to get Elm up and running. Here's what a simple Elm program (with a
-filename of `Hello.elm`) looks like:
+Мы можем начать с классического примера «Hello World», чтобы продемонстрировать, как легко начать работать с Elm. Вот как выглядит самая простая программа на Elm (с именем файла `Hello.elm`):
 
 ```elm
 module Hello exposing (main)
@@ -37,73 +24,41 @@ main =
     Html.text "Hello World"
 ```
 
-The syntax is concise, and this serves as a quick way to display some text on a
-page in the browser (we'll get to that in a second). But this is also a good
-example in the sense that it shows a handful of things about Elm that might
-seem unsettling at first. Where are all the parentheses and curly braces?
-What's with the odd spacing?
+Синтаксис лаконичен, позволяющий быстро отобразить текст на странице в браузере (мы вернемся к этому через секунду). Но это также хороший пример, поскольку показывает несколько особенностей Elm, которые на первый взгляд могут сбить с толку. Так, например, где все круглые и фигурные скобки? Что это за странный отступ?
 
-## Elm Syntax
+## Синтаксис Elm
 
-The first line is Elm boilerplate for defining our module. Since this is a
-functional language, everything we do is essentially going to be modules and
-functions. Functions will be _everything_ to us, and modules will help us
-gather and organize all those functions. What we're saying with the first line
-of code is that we're creating the `Hello` module, and "exposing" the only
-function (`main`) from it. So if someone wanted to use our application, they
-would just need to import it and they could use whatever functionality we
-provided in that `main` function.
+Первая строка — это шаблонный код для определения модуля. Поскольку Elm это функциональный язык, то все, с чем мы работаем, представляет собой модули и функции. Функции будут служить для нас _всем_, когда как модули помогут нам собрать и организовать все эти функции. Итак, в первой строке кода мы создаем модуль `Hello` и «раскрываем» единственную функцию (`main`) в нем. Поэтому, если кто-то захочет использовать ваш модуль, ему нужно всего лишь импортировать его, и тогда он сможет использовать любую функциональность, предоставляемую данной функцией `main`.
 
-## Modules, Functions, and Types
+## Модули, функции и типы
 
-Speaking of imports, the next line says `import Html`. This allows us to use
-any function from Elm's built-in
-[Html library](http://package.elm-lang.org/packages/elm-lang/html/latest/Html).
+Кстати про импортирование — в следующей строке есть `import Html`. Эта строчка кода позволяет нам использовать любую функцию из встроенной [HTML-библиотеки](http://package.elm-lang.org/packages/elm-lang/html/latest/Html), поставляемой вместе с Elm.
 
-The function that we're using in this program is the
-[`Html.text`](http://package.elm-lang.org/packages/elm-lang/html/latest/Html#text)
-function, which takes a single string as an argument. If we take a look at the
-documentation for the `text` function, we can see the Elm type syntax:
+Используемая функция в программе — это функция [`Html.text`](http://package.elm-lang.org/packages/elm-lang/html/latest/Html#text), которая принимает в качестве аргумента единственную строку. Если посмотреть на документацию к функции `text`, то можно увидеть синтаксис типа Elm:
 
 ```elm
 text : String -> Html msg
 ```
 
-That means when we added `Html.text "Hello World"` to our program, the
-`"Hello World"` string was our only argument. And `Html msg` was the return
-type. Don't worry too much about typing yet, but it's helpful to think about a
-couple of quick things for now:
+Это означает, что когда мы добавили строчку кода `Html.text "Hello World"`, строка `"Hello World"` является единственным аргументом. В то время как строка `Html msg` является возвращаемым типом. В данный момент пока еще беспокойтесь относительно типизации, однако полезно подумать над несколькими короткими вопросами:
 
-- How many arguments does a function take?
-- What is the type of each argument?
-- What is the type of the return value?
+- Сколько аргументов принимает функция?
+- Какой тип у каждого аргумента?
+- Какой тип возвращаемого значения?
 
-In our case, `text` is the name of the function. Then, we use a `:` symbol
-before the list of arguments. This function only takes a single argument, and
-it's a `String`. Then, we use the arrow symbol `->` after the argument. Lastly,
-we indicate the return type, which is an `Html msg`. The `msg` part isn't
-important, and we could have said `Html a`. The important part is that we are
-returning some HTML code that we are going to use to display the text on a page
-in the browser.
+В нашем случае `text` — это имя функции. Затем мы используем символ `:` перед списком аргументов. Эта функция принимает только один аргумент типа `String`. Далее мы используем символ стрелки `->` после аргумента. Наконец, мы указываем тип возвращаемого значения `Html msg`. Часть `msg` не важна, и вместо этого могло быть, например, `Html a`. Самое главное, что мы возвращаем некоторый HTML-код, который мы собираемся использовать для отображения текста на странице в браузере.
 
-## Main Function
+## Основная функция
 
-The `main` function is the starting point for our application. When we run it,
-the Elm runtime is going to look for `main`. But Elm is _way_ more fun to play
-with than it is to read about, so let's finally run our example.
+Функция `main` — отправная точка нашего приложения. Когда мы его запустим, среда выполнения кода Elm будет искать `main`. Но Elm _гораздо_ интереснее пробовать самому, чем читать про него, так что давайте наконец-то запустим пример.
 
-Before we can run Elm code, we'll need to install Elm. There are different
-ways of doing it, but the easiest way is to use `npm` since most web developers
-have [Node.js](https://nodejs.org/en) installed already. Alternatively, there
-are also installers available on the [Elm home page](http://elm-lang.org).
+Прежде чем мы сможем выполним код Elm, нужно установить собственно сам Elm. Существуют разные способы, но самый простой — использовать `npm`, поскольку у многих веб-разработчиков уже установлен [Node.js](https://nodejs.org/en). Кроме того, на [главной странице Elm](http://elm-lang.org) есть также установщики.
 
 ```shell
 $ npm install -g elm
 ```
 
-That should be all you need. It globally installs the `elm` command on your
-machine, so you can run it from the command line. In fact, type `elm` now and
-take a look at the output (some output has been trimmed for readability):
+Этого должно быть достаточно. Данная команда глобально установит утилиту командной строки `elm` на компьютер. По факту, если ввести сейчас `elm`, можно увидеть следующий вывод (некоторые данные были сокращены в целях удобства чтения):
 
 ```shell
 $ elm
@@ -130,12 +85,7 @@ happy to help out. They hang out there because it is fun, so be kind to get the
 best results!
 ```
 
-We'll use several of these command line features eventually, but for now let's
-focus on two of them. First, let's create a temporary directory called `elm`
-that we'll use to hold our Elm files, and then we'll use the `elm init` command
-we see above to fetch the libraries we need. Also note we don't necessarily
-need to place this folder inside our existing Phoenix application yet, and that
-we'll take care of integrating Phoenix and Elm in the next chapter.
+В конечном итоге мы будем использовать некоторые из представленных выше возможностей командной строки, но пока давайте сосредоточимся на двух из них. Сначала создадим временную директорию `elm`, которую мы будем использовать для хранения наших Elm-файлов, а затем мы воспользуемся командой `elm init` для загрузки нужных библиотек. Также обратите внимание, что не обязательно помещать эту директорию в наше существующее приложение Phoenix, поскольку мы займемся интеграцией Phoenix и Elm в следующей главе.
 
 ```shell
 $ mkdir elm
@@ -143,9 +93,7 @@ $ cd elm
 $ elm init
 ```
 
-We're creating an empty `elm` folder, and then when we run `elm init` it's
-going to create all the `elm.json` we need (note again that this output has
-been trimmed a bit for readability):
+Мы создаем пустую директорию `elm`, а затем при выполнении `elm init` будет создан файл `elm.json` (обратите внимание, что снова вывод команды был немного обрезан для удобства чтения):
 
 ```shell
 $ elm init
@@ -157,15 +105,10 @@ Would you like me to create an elm.json file now? [Y/n]: Y
 Okay, I created it. Now read that link!
 ```
 
-You might have noticed how friendly the Elm compiler is. The messaging has a
-conversational tone that can help both beginners and experienced developers
-alike. Feel free to check out the
-[introductory documentation](https://elm-lang.org/0.19.0/init) mentioned in the
-output for more information about setting up Elm projects.
+Вы могли заметить, насколько дружелюбен компилятор Elm. Вывод имеет разговорный тон, который может помочь как начинающим, так и опытным разработчикам. Можете почитать [соответствующий раздел в документации](https://elm-lang.org/0.19.0/init), упомянутый в выводе, чтобы получить дополнительную информацию по настройке Elm-проектов.
 
-We have everything we need for now: an `elm.json` file for our project
-configuration, and `src` folder to put our `.elm` files. Let's create the
-simple `Hello.elm` file inside the `src` folder for our "Hello World" program:
+Сейчас у нас есть все, что нам нужно: файл `elm.json` для конфигурации проекта и папка `src` для хранения файлов с расширением `.elm`. Давайте создадим простой файл `Hello.elm` внутри директории `src` для нашей программы «Hello World»:
+
 
 ```elm
 module Hello exposing (main)
@@ -177,48 +120,34 @@ main =
     Html.text "Hello World"
 ```
 
-All that's left is to run our program. Elm comes with a utility called
-`elm reactor` that we can use to serve our program locally and then access
-it in our browser. Go ahead and run it from the command line:
+Осталось только запустить программу. Вместе с Elm входит утилита `elm reactor`, которую мы можем использовать для локального запуска нашей программы и последующего доступа к ней в браузере. Идем дальше и выполняем из командной строки:
 
 ```shell
 $ elm reactor
 Go to <http://localhost:8000> to see your project dashboard.
 ```
 
-Now you can visit `http://localhost:8000` in your browser and see the files
-and dependencies for our project.
+Теперь можно посетить `http://localhost:8000` в браузере и увидеть файлы и зависимости проекта.
 
 ![elm reactor](images/elm_introduction/elm_reactor.png)
 
-We only have a single Elm file (`Hello.elm`), so let's click the link in the
-`src` folder to compile it and see the results.
+У нас имеется только один Elm-файл (`Hello.elm`), поэтому давайте перейдем по ссылке в директорию `src`, чтобы скомпилировать его и посмотреть результаты.
 
 ![Elm Hello World Example](images/elm_introduction/elm_hello_world.png)
 
 ## elm-format
 
-"Hello World" is admittedly not the most exciting example. But the good news is
-that we have Elm installed and we have a simple program up and running.
+Разумеется, «Hello World» — это не самый интересный пример. Однако уже хорошо, что уже установлен Elm, а также есть хоть простая, но рабочая программа.
 
-Let's take a look a couple more things that will make our lives easier with
-this example still in mind.
+Давайте рассмотрим еще пару деталей, которые сделают нашу жизнь проще, имея в виду данный пример.
 
-Before we move any further, definitely consider trying
-[`elm-format`](https://github.com/avh4/elm-format). It's a plugin that you can
-use with your editor that makes working with Elm much easier. It's particularly
-great when you're getting started, because you can type a rough idea of what
-you want to do and then immediately know if it's valid code as long as
-`elm-format` reformats the code and doesn't mention errors or warnings.
+Прежде чем двигаться дальше, обязательно стоит попробовать [`elm-format`](https://github.com/avh4/elm-format). Это плагин, который значительно облегчает работу с Elm, можно использовать вместе с вашим редактором. Это особенно актуально, когда вы только начинаете, потому что вы можете получить общее представление о том, что вы хотите сделать, а также сразу узнать, является ли написанный вами код корректным, пока `elm-format` переформатирует код без отображения ошибки или предупреждения.
 
-While `elm-format` is not strictly necessary, and it's possible to write solid
-Elm code without it, it's a remarkably helpful tool that can help you focus on
-problem solving instead of worrying about valid syntax.
+Хотя `elm-format` не является строго обязательным, и без него можно писать хороший код Elm, тем не менее это удивительно полезный инструмент, который поможет вам сосредоточиться на решении проблем, вместо того, чтобы думать о правильном синтаксисе.
 
-## Comments and Type Signatures
+## Комментарии и сигнатуры типов
 
-Let's go ahead and add a quick comment with the `-- comment` syntax to
-indicate the filename at the top:
+Давай пойдем дальше и добавим сверху небольшой комментарий с помощью синтаксиса `-- comment`, который указывающий на имя файла:
 
 ```elm
 -- Hello.elm
@@ -231,8 +160,7 @@ main =
     Html.text "Hello World"
 ```
 
-Next, let's refactor our `import` declaration slightly to be more explicit
-about which functions we want to import from the `Html` module:
+Далее, давайте немного улучшим объявление `import` для более четкого определения, какие функции мы хотим импортировать из модуля `Html`:
 
 ```elm
 -- Hello.elm
@@ -245,7 +173,7 @@ main =
     text "Hello World"
 ```
 
-We can also add a type signature for our `main` function:
+Мы также можем добавить сигнатуру типа для функции `main`:
 
 ```elm
 -- Hello.elm
@@ -259,14 +187,9 @@ main =
     text "Hello World"
 ```
 
-When we create type signatures, we're restating the function name first. Then,
-after the `:` character, we give the types of the arguments and the return
-value. Since this function doesn't have any arguments, we're just giving the
-return type here, which is `Html msg`. That just means we're returning some
-HTML code when we return a value from the `Html.text` function that we're using.
+При создании сигнатуры типов, мы сначала перезагружаем имя функции. Затем, после символа `:`, указываем типы аргументов и возвращаемое значение. Но так как у этой функции нет аргументов, мы просто указываем в данном случае тип возвращаемого значения, которым является `Html msg`. Это значение просто означает, что мы возвращаем некоторый HTML-код из используемой нами функции `Html.text`.
 
-The pipe operator we discovered in Elixir also works in Elm. In fact, we can
-rewrite our "Hello World" text in all uppercase letters with the following:
+Оператор конвейера, который мы узнали в Elixir, также есть в Elm. Фактически, мы можем переписать текст «Hello World» прописными буквами следующим образом:
 
 ```elm
 -- Hello.elm
@@ -282,23 +205,10 @@ main =
         |> text
 ```
 
-Inside the `main` function, we start with the raw `"Hello World"` string. Then,
-we pipe that to the
-[`toUpper`](http://package.elm-lang.org/packages/elm-lang/core/latest/String#toUpper)
-function from the
-[`String`](http://package.elm-lang.org/packages/elm-lang/core/latest/String)
-module. Then, we pipe the result of that to the `text` function that will
-return the `Html msg` that our function is meant to return.
+Внутри функции `main` мы начинаем с простой строки `"Hello World"`. Затем передаем эту строку функции [`toUpper`](http://package.elm-lang.org/packages/elm-lang/core/latest/String#toUpper) из модуля [`String`](http://package.elm-lang.org/packages/elm-lang/core/latest/String). А потом передаем полученный результат в функцию `text`, возвращающее значение типа `Html msg`, которое определенное в нашей функции.
 
-After seeing the results in the browser, feel free to delete the temporary
-`elm` folder that we created in this chapter since we'll be setting things up
-inside our Phoenix application in the next chapter.
+После просмотра результатов в браузере, можете удалить временную директорию `elm`, которую мы создали в начале главы, поскольку мы приведем в порядок наше Phoenix-приложение в следующей главе.
 
-## Summary
+## Резюме
 
-There's a lot more to Elm than what we've covered in our simple "Hello World"
-example. But this is a good start to get a look at the syntax and see that it's
-not so scary as it might seem at first. In the next sections, we're going to
-set up our Phoenix application to use Elm for the front-end. We're also going
-to talk about the Elm Architecture, and how to pull data from our API into the
-front-end application.
+Есть еще много чего в Elm, чем то, что мы рассмотрели в нашем примере «Hello World». Однако это хорошее начало, чтобы посмотреть на синтаксис и увидеть, что он не такой страшный, как может показаться на первый взгляд. В следующих разделах мы настроим наше Phoenix-приложение для использования с Elm, который будем использовать в качестве фронтенда. Мы также поговорим об архитектуре Elm и о том, как получать данные из API в фронтенд-приложение.
